@@ -1,0 +1,28 @@
+/**
+ * Griddfärger
+ */
+.x-toolbar{border-color:#a9bfd3;border-style:solid;border-width:0 0 1px 0;display:block;padding:2px;background:#007457 url(../images/default/toolbar/bg.gif) repeat-x top left;position:relative;zoom:1;}
+.x-panel-mc{border:0 none;padding:0;margin:0;font:normal 11px tahoma,arial,helvetica,sans-serif;padding-top:6px;background:#dee5a0;}
+.x-panel-tl .x-panel-header{color:#093909;font:bold 11px tahoma,arial,verdana,sans-serif;padding:5px 0 4px 0;border:0 none;background:transparent;}
+.x-panel-tl{background:transparent url(../images/default/panel/corners-sprite.gif) no-repeat 0 0;padding-left:6px;zoom:1;border-bottom:1px solid #093909;}
+.x-panel-tbar-noheader .x-toolbar,.x-panel-mc .x-panel-tbar .x-toolbar{border-top:1px solid #093909;border-bottom:0 none;}
+.x-panel-tbar .x-toolbar{border:1px solid #093909;border-top:0 none;overflow:hidden;padding:2px;}
+td.x-grid3-hd-over .x-grid3-hd-inner,td.sort-desc .x-grid3-hd-inner,td.sort-asc .x-grid3-hd-inner,td.x-grid3-hd-menu-open .x-grid3-hd-inner{background:#dee5a0 url(../images/default/grid/grid3-hrow-over.gif) repeat-x left bottom;}
+.x-grid-panel .x-panel-mc .x-panel-body{border:1px solid #093909;}
+.x-grid3-hd-row td{line-height:15px;vertical-align:middle;border-left:1px solid #dee5a0;border-right:1px solid #093909;}
+
+/**
+ * Inställningar för övrigt
+ */
+
+ text {
+ 	font-family: Arial; 
+ }
+ 
+ p.headLine {
+	font-size: 15pt;
+ }
+ 
+ td.Uppgifter {
+	font-size: 10pt;
+ }
