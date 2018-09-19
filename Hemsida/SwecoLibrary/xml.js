@@ -87,7 +87,7 @@
 			xml += "\n\t\t<Postnummer>" + FixaTillTecken(formular.FPostnummer.value) + "</Postnummer>";
 			xml += "\n\t\t<Ort>" + FixaTillTecken(formular.FOrt.value) + "</Ort>";
 			xml += "\n\t\t<Region_F&oumlrvaltning>" + FixaTillTecken(formular.Region.value) + "</Region_F&oumlrvaltning>";
-			xml += "\n\t\t<VAT>" + FixaTillTecken(formular.VAT.value) + "</VAT>";
+			xml += "\n\t\t<VAT>" + "SE" + FixaTillTecken(formular.VAT.value).replace('-','') + "01" + "</VAT>";
 			xml += "\n\t\t<Distrikt_Omr&aringde>" + FixaTillTecken(formular.Distrikt.value) + "</Distrikt_Omr&aringde>";
 			xml += "\n\t\t<Best&aumlllningsreferens>" + FixaTillTecken(formular.Bestallningsreferens.value) + "</Best&aumlllningsreferens>";
 			
