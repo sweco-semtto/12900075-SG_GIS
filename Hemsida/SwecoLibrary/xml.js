@@ -87,7 +87,7 @@
 			xml += "\n\t\t<Postnummer>" + FixaTillTecken(formular.FPostnummer.value) + "</Postnummer>";
 			xml += "\n\t\t<Ort>" + FixaTillTecken(formular.FOrt.value) + "</Ort>";
 			xml += "\n\t\t<Region_F&oumlrvaltning>" + FixaTillTecken(formular.Region.value) + "</Region_F&oumlrvaltning>";
-			xml += "\n\t\t<L&aumln>" + FixaTillTecken(formular.Lan.value) + "</L&aumln>";
+			xml += "\n\t\t<VAT>" + FixaTillTecken(formular.VAT.value) + "</VAT>";
 			xml += "\n\t\t<Distrikt_Omr&aringde>" + FixaTillTecken(formular.Distrikt.value) + "</Distrikt_Omr&aringde>";
 			xml += "\n\t\t<Best&aumlllningsreferens>" + FixaTillTecken(formular.Bestallningsreferens.value) + "</Best&aumlllningsreferens>";
 			
@@ -172,7 +172,7 @@
 			text += "\nPostnummer: " + formular.FPostnummer.value;
 			text += "\nOrt: " + formular.FOrt.value;
 			text += "\nRegion/Förvaltning: " + formular.Region.value;
-			text += "\nLän: " + formular.Lan.value;
+			text += "\nVAT: " + formular.VAT.value;
 
 			text += "\nDistrikt/Område: " + formular.Distrikt.value;
 			text += "\nBeställningsreferens: " + formular.Bestallningsreferens.value;
