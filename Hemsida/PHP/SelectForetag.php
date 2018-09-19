@@ -51,7 +51,7 @@ while($row = mysql_fetch_array($result))
 	echo "\n";
 	echo "<Distrikt_Omrade>" . $row["Distrikt_Omrade"] . "</Distrikt_Omrade>";	
 	echo "\n";
-	echo "<Lan>" . $row["Lan"] . "</Lan>";	
+	echo "<VAT>" . $row["VAT"] . "</VAT>";	
 	echo "\n";
 	echo "<Kontaktperson1>" . $row["Kontaktperson1"] . "</Kontaktperson1>";	
 	echo "\n";

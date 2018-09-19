@@ -20,7 +20,7 @@ $Postnummer=$_POST['Postnummer'];
 $Ort=$_POST['Ort']; 
 $Region_Forvaltning=$_POST['Region_Forvaltning']; 
 $Distrikt_Omrade=$_POST['Distrikt_Omrade']; 
-$Lan=$_POST['Lan']; 
+$VAT=$_POST['VAT']; 
 $Kontaktperson1=$_POST['Kontaktperson1']; 
 $TelefonArb1=$_POST['TelefonArb1']; 
 $TelefonMobil1=$_POST['TelefonMobil1']; 
@@ -38,7 +38,7 @@ $OrdernrText=$_POST['OrdernrText'];
 $sql="INSERT INTO `$tbl_name` VALUES 
 ('$OrderID', '$Ordernr', '$Bestallningsreferens', '$Bestallningsdatum',
 '$Tidsstampel', '$Foretagsnamn', '$Faktureringsadress', '$Postnummer',
-'$Ort', '$Region_Forvaltning', '$Distrikt_Omrade', '$Lan', '$Kontaktperson1',
+'$Ort', '$Region_Forvaltning', '$Distrikt_Omrade', '$VAT', '$Kontaktperson1',
 '$TelefonArb1', '$TelefonMobil1', '$TelefonHem1', '$Epostadress1', '$Kontaktperson2',
 '$TelefonArb2', '$TelefonMobil2', '$TelefonHem2', '$Epostadress2', '$Kommentar',
 '$OrdernrText', '0')";
