@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <!-- GPS -->
+    <!-- GPSens BaudRate-->
+    <add key="GPSBaudRate" value="4800" />
+
+    <!-- GPSens Com-ports uttag-->
+    <add key="GPSPort" value="8" />
+
+    <!-- Intervallet för hur ofta GPSen ska uppdateras-->
+    <add key="GPSIntervall" value="2000" />
+
+    <!-- Sökväg till symboler för att markera GPS-punkten-->
+    <add key="SymbolGpsN" value="C:\SG_GIS\Bilder\PilN.png" />
+    <add key="SymbolGpsNO" value="C:\SG_GIS\Bilder\PilNO.png" />
+    <add key="SymbolGpsO" value="C:\SG_GIS\Bilder\PilO.png" />
+    <add key="SymbolGpsSO" value="C:\SG_GIS\Bilder\PilSO.png" />
+    <add key="SymbolGpsS" value="C:\SG_GIS\Bilder\PilS.png" />
+    <add key="SymbolGpsSV" value="C:\SG_GIS\Bilder\PilSV.png" />
+    <add key="SymbolGpsV" value="C:\SG_GIS\Bilder\PilV.png" />
+    <add key="SymbolGpsNV" value="C:\SG_GIS\Bilder\PilNV.png" />
+    <add key="SymbolGpsDefault" value="C:\SG_GIS\Bilder\Default.png" />
+
+    <!-- symbolstorlek för Gps-->
+    <add key="SymbolSizeGps" value="-50" />
+
+    <!-- Sökvägar och namn -->
+    <!--Namn på lagret med beställningarna-->
+    <add key="NamnBestallningsLager" value="Bestallning_Tatuk"/>
+
+    <!-- Namn på kolumner i tabfilen -->
+    <add key="NamnCanKolumn" value="Canton"/>
+    <add key="NamnStatusKolumn" value="Status"/>
+    <add key="NamnFöretagsKolumn" value="Namn"/>
+    <add key="NamnRegionKolumn" value="Regionforv"/>
+    <add key="NamnDistriktKolumn" value="Distriktom"/>
+    <add key="NamnOrderNrKolumn" value="Ordernr"/>
+
+    <!-- Sökväg till projektfil innehållande info om kartdata som ska visas-->
+    <add key="TatukProjectFilePath" value="C:\SG_GIS\Kartdata\SGAB.TTKGP"/>
+
+    <!-- Sökväg  till katalog med kartdata, underlättar vid öppnande av nya lager i kartan-->
+    <add key="FolderPath" value="C:\SG_GIS\Kartdata\"/>
+
+    <!--Sökväg  till mappen med Excel-filerna-->
+    <add key="ExcelFilePath" value="C:\SG_GIS\ExcelFiler\"/>
+
+    <!-- Kolumnnamn för Excel -->
+    <add key="NamnRegion_FörvaltningKolumn" value="RegionForv"/>
+    <add key="NamnDistrikt_OmrådeKolumn" value="DistriktOm"/>
+    <add key="NamnOrdernrKolumn" value="Ordernr"/>
+
+    <!-- Kartlager -->
+    <add key="Översiktskarta" value="Oversiktskartan"/>
+    <add key="Sverigekartan" value="Sverigekartan"/>
+    <add key="TerrängkartaSyd" value="TerrangkartanSyd"/>
+    <add key="TerrängkartanMitt" value="TerrangkartanMitt"/>
+    <add key="TerrängkartanNord" value="TerrangkartanNord"/>
+
+    <!--Sökväg  till arbetskatalog-->
+    <add key="WorkPath" value="C:\SG_GIS\Arbetskatalog\"/>
+
+    <!-- Log -->
+    <add key="LogExceptions" value="True"/>
+    <add key="LogFilePath" value="C:\SG_GIS\Arbetskatalog\SG_GIS_Exceptions.log" />
+
+    <!-- Storlek och zoom -->
+    <!--Önskad storlek på applikationen, exempel: DM mob 1300,840 eller DM docka 1300,1055 eller annat-->
+    <add key="AppSize" value="1300,1055"/>
+
+    <!--Zoominställningar för uppstart-->
+    <add key="VisibleExtent" value="1338000,1667000,6638000,6932000"/>
+
+    <!--Zoominställningar för maxbild-->
+    <add key="MaxExtent" value="1171599,1899960,6105051,7674921"/>
+
+    <!-- Inställningar för transformation -->
+    <add key="srInIni" value="GEOGCS[&quot;GCS_WGS_1984&quot;,DATUM[&quot;D_WGS_1984&quot;,SPHEROID[&quot;WGS_1984&quot;,6378137,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]]"/>
+    <add key="srOutIni" value="PROJCS[&quot;RT90_25_gon_W-approximativ&quot;,GEOGCS[&quot;GCS_RT_1990&quot;,DATUM[&quot;D_GRS_1980&quot;,SPHEROID[&quot;GRS_1980&quot;,6378137.0,298.257222101]],PRIMEM[&quot;Greenwich&quot;,0.0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;False_Easting&quot;,1500064.274],PARAMETER[&quot;False_Northing&quot;,-667.711],PARAMETER[&quot;Central_Meridian&quot;,15.80628452944445],PARAMETER[&quot;Scale_Factor&quot;,1.00000561024],PARAMETER[&quot;Latitude_Of_Origin&quot;,0.0],UNIT[&quot;Meter&quot;,1.0]]"/>
+
+    <!-- StoraEnso -->
+    <add key="StoraEnso0" value="C:\SG_GIS\Bilder\StoraEnso0.gif" />
+    <add key="StoraEnso0_S" value="C:\SG_GIS\Bilder\StoraEnso0_S.gif" />
+    <add key="StoraEnso1" value="C:\SG_GIS\Bilder\StoraEnso1.gif" />
+    <add key="StoraEnso1_S" value="C:\SG_GIS\Bilder\StoraEnso1_S.gif" />
+    <add key="StoraEnso2" value="C:\SG_GIS\Bilder\StoraEnso2.gif" />
+    <add key="StoraEnso2_S" value="C:\SG_GIS\Bilder\StoraEnso2_S.gif" />
+    <add key="StoraEnso3" value="C:\SG_GIS\Bilder\StoraEnso3.gif" />
+    <add key="StoraEnso3_S" value="C:\SG_GIS\Bilder\StoraEnso3_S.gif" />
+
+    <!-- All -->
+    <add key="All0" value="C:\SG_GIS\Bilder\All0.gif" />
+    <add key="All0_S" value="C:\SG_GIS\Bilder\All0_S.gif" />
+    <add key="All1" value="C:\SG_GIS\Bilder\All1.gif" />
+    <add key="All1_S" value="C:\SG_GIS\Bilder\All1_S.gif" />
+    <add key="All2" value="C:\SG_GIS\Bilder\All2.gif" />
+    <add key="All2_S" value="C:\SG_GIS\Bilder\All2_S.gif" />
+    <add key="All3" value="C:\SG_GIS\Bilder\All3.gif" />
+    <add key="All3_S" value="C:\SG_GIS\Bilder\All3_S.gif" />
+
+    <!-- SCA -->
+    <add key="SCA0" value="C:\SG_GIS\Bilder\SCA0.gif" />
+    <add key="SCA0_S" value="C:\SG_GIS\Bilder\SCA0_S.gif" />
+    <add key="SCA1" value="C:\SG_GIS\Bilder\SCA1.gif" />
+    <add key="SCA1_S" value="C:\SG_GIS\Bilder\SCA1_S.gif" />
+    <add key="SCA2" value="C:\SG_GIS\Bilder\SCA2.gif" />
+    <add key="SCA2_S" value="C:\SG_GIS\Bilder\SCA2_S.gif" />
+    <add key="SCA3" value="C:\SG_GIS\Bilder\SCA3.gif" />
+    <add key="SCA3_S" value="C:\SG_GIS\Bilder\SCA3_S.gif" />
+
+    <!-- Sveaskog -->
+    <add key="Sveaskog0" value="C:\SG_GIS\Bilder\Sveaskog0.gif" />
+    <add key="Sveaskog0_S" value="C:\SG_GIS\Bilder\Sveaskog0_S.gif" />
+    <add key="Sveaskog1" value="C:\SG_GIS\Bilder\Sveaskog1.gif" />
+    <add key="Sveaskog1_S" value="C:\SG_GIS\Bilder\Sveaskog1_S.gif" />
+    <add key="Sveaskog2" value="C:\SG_GIS\Bilder\Sveaskog2.gif" />
+    <add key="Sveaskog2_S" value="C:\SG_GIS\Bilder\Sveaskog2_S.gif" />
+    <add key="Sveaskog3" value="C:\SG_GIS\Bilder\Sveaskog3.gif" />
+    <add key="Sveaskog3_S" value="C:\SG_GIS\Bilder\Sveaskog3_S.gif" />
+
+    <!-- Stift -->
+    <add key="Stift0" value="C:\SG_GIS\Bilder\Stift0.gif" />
+    <add key="Stift0_S" value="C:\SG_GIS\Bilder\Stift0_S.gif" />
+    <add key="Stift1" value="C:\SG_GIS\Bilder\Stift1.gif" />
+    <add key="Stift1_S" value="C:\SG_GIS\Bilder\Stift1_S.gif" />
+    <add key="Stift2" value="C:\SG_GIS\Bilder\Stift2.gif" />
+    <add key="Stift2_S" value="C:\SG_GIS\Bilder\Stift2_S.gif" />
+    <add key="Stift3" value="C:\SG_GIS\Bilder\Stift3.gif" />
+    <add key="Stift3_S" value="C:\SG_GIS\Bilder\Stift3_S.gif" />
+
+  </appSettings>
+
+  <startup >
+    <![CDATA[<]]>
+  </startup>
+
+</configuration>

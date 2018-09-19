@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGAB", "SGAB.csproj", "{8EAF0A8A-C400-475B-91FA-5A5C5B977342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGAB_Database", "..\SGAB Database\SGAB_Database.csproj", "{664CD740-A0CF-4EDA-9BC6-8CBE049A5816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGAB_InternetConnection", "..\SGAB_InternetConnection\SGAB_InternetConnection.csproj", "{06724F5C-9A24-4DA4-982F-A66A0A4A84A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGAB_Karta", "..\SGAB_KARTA\SGAB_Karta.csproj", "{7287DD30-1C17-4312-AD2B-21D3ADA8597E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SGAB_Setup", "..\SGAB_Setup\SGAB_Setup.vdproj", "{4DD90246-577D-49EB-92CF-BEE0220C7C32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EAF0A8A-C400-475B-91FA-5A5C5B977342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAF0A8A-C400-475B-91FA-5A5C5B977342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAF0A8A-C400-475B-91FA-5A5C5B977342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAF0A8A-C400-475B-91FA-5A5C5B977342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664CD740-A0CF-4EDA-9BC6-8CBE049A5816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664CD740-A0CF-4EDA-9BC6-8CBE049A5816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664CD740-A0CF-4EDA-9BC6-8CBE049A5816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664CD740-A0CF-4EDA-9BC6-8CBE049A5816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06724F5C-9A24-4DA4-982F-A66A0A4A84A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06724F5C-9A24-4DA4-982F-A66A0A4A84A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06724F5C-9A24-4DA4-982F-A66A0A4A84A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06724F5C-9A24-4DA4-982F-A66A0A4A84A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7287DD30-1C17-4312-AD2B-21D3ADA8597E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7287DD30-1C17-4312-AD2B-21D3ADA8597E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7287DD30-1C17-4312-AD2B-21D3ADA8597E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7287DD30-1C17-4312-AD2B-21D3ADA8597E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD90246-577D-49EB-92CF-BEE0220C7C32}.Debug|Any CPU.ActiveCfg = Debug
+		{4DD90246-577D-49EB-92CF-BEE0220C7C32}.Debug|Any CPU.Build.0 = Debug
+		{4DD90246-577D-49EB-92CF-BEE0220C7C32}.Release|Any CPU.ActiveCfg = Release
+		{4DD90246-577D-49EB-92CF-BEE0220C7C32}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal
