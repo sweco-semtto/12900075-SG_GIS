@@ -14,7 +14,6 @@ using TatukGIS.NDK.WinForms;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Collections;
-using SharpGis.SharpGps;
 using System.Collections.Generic;
 
 namespace SGAB.SGAB_Karta
@@ -39,11 +38,6 @@ namespace SGAB.SGAB_Karta
         private Measure _measure;
         private GPSHandler _gpsHandler;
         private TGIS_GpsNmea Gps;
-
-        /// <summary>
-        /// GPS-handler ifrån Sharp GPS. 
-        /// </summary>
-        private SharpGis.SharpGps.GPSHandler _GPS_Sharp;
 
         private System.Windows.Forms.Label infoText;
         private System.Windows.Forms.Timer timer1;
@@ -147,8 +141,6 @@ namespace SGAB.SGAB_Karta
         {
             InitializeComponent();
 
-            // Skapar det nya GPS-sharp objektet
-            _GPS_Sharp = new SharpGis.SharpGps.GPSHandler(this);
             // MTTO: 2012-02-17. Hittade inte Gps i gränssnittet så jag har ej kunnat ta bort den. Har lagt till
             // ett nytt TGIS_GpsNmea objekt för att få gps-signalen att fungera. Annars tog bara gamla Gps emot
             // signalen men tolkade inte den. 
@@ -183,8 +175,6 @@ namespace SGAB.SGAB_Karta
                 //sätter utseende, längd och placering på skalstocken
                 tgisScale.BorderStyle = BorderStyle.None;
 
-                //_gpsHandler = new GPSHandler(tgisKarta, Gps, _GPS_Sharp);
-                //_gpsHandler = new GPSHandler(tgisKarta, _GPS_Sharp);
                 _gpsHandler = new GPSHandler(tgisKarta, Gps);
                 _gpsHandler.GpsTracker = this.GpsTracker;
                 _gpsHandler.GpsTracker.MapOrGPSError += new SGAB.GPSTracking.UserRegisterMapOrGPSErrorHandler(GpsTracker_MapOrGPSError);
@@ -192,7 +182,6 @@ namespace SGAB.SGAB_Karta
                 _ErrorTimer.Interval = 1000;
                 _ErrorTimer.Enabled = true;
                 _ErrorTimer.Tick += new System.EventHandler(OnErrorTimerEvent);
-                //_gpsHandler = new GPSHandler(tgisKarta, Gps);
 
                 //laddar kartdata
                 _kartverktyg.LaddaKartData();
@@ -1079,9 +1068,6 @@ namespace SGAB.SGAB_Karta
                 Gps.BaudRate = Configuration.GPSBaudRate;
                 Gps.Active = true;
 
-                // Startar GPS-Sharp, med rätt com-port och baud rate. 
-                //_GPS_Sharp.Start("COM" + Configuration.GPSPort.ToString(), Configuration.GPSBaudRate);
-
                 timer1.Interval = Configuration.GPSIntervall;
                 timer1.Start();               
             }
@@ -1107,7 +1093,6 @@ namespace SGAB.SGAB_Karta
             try
             {
                 timer1.Enabled = false;
-                //_GPS_Sharp.Stop();
                 Gps.Active = false;
             }
             catch (Exception ex)

@@ -48,11 +48,6 @@ namespace SGAB.SGAB_Karta
         TGIS_SymbolAbstract _symbolNV;
         TGIS_SymbolAbstract _symbolDefault;
 
-        ///// <summary>
-        ///// GPS-handler ifrån Sharp GPS. 
-        ///// </summary>
-        //private SharpGis.SharpGps.GPSHandler _GPS_Sharp;
-
         protected GPSTracking.ITrackerFromTatukGIS _GpsTracker;
 
         /// <summary>
@@ -79,20 +74,14 @@ namespace SGAB.SGAB_Karta
             set
             {
                 _GpsTracker = value;
-
-                // Sätter en lyssnare på rådata (NMEA) ifrån ShapgGPS 
-                // MTTO: 2012-02-17. Kommenterar bort rad nedan, har inte SharpGPS-längre
-                //_GPS_Sharp.NewGPSFix += new SharpGis.SharpGps.GPSHandler.NewGPSFixHandler(_GpsTracker.GPSRawGPRMCEventHandler);
             }
         }
 
         //public GPSHandler(TGIS_ViewerWnd GIS, TGIS_GpsNmea GPS, SharpGis.SharpGps.GPSHandler GPS_Sharp)
         public GPSHandler(TGIS_ViewerWnd GIS, TGIS_GpsNmea GPS)
-       // public GPSHandler(TGIS_ViewerWnd GIS, SharpGis.SharpGps.GPSHandler GPS_Sharp)
         {
             _tgisKarta = GIS;
             _tgisGPS = GPS;
-            //_GPS_Sharp = GPS_Sharp;
 
             // Hämtar hur stor avvikelse i meter som gäller när pilen skall ändras i kartan. 
             GPSDeviationInMetersMin = Configuration.GetConfiguration().GPSDeviationInMetersMin;
@@ -215,12 +204,7 @@ namespace SGAB.SGAB_Karta
                 //TGIS_Coordinate coords = new TGIS_Coordinate();	
                 TGIS_ParamsSectionVector paramGps;
 
-                // Skickar information till gps-spårningen. 
-                // MTTO: 2012-12-17. Kommenterar bort för SharpGPS har vi inte längre. 
-                //this.GpsTracker.GPSEventHandler(this, _GPS_Sharp);
-
-                //om satellitmottagningen är dålig fås ett varningsmeddelande
-                //if (false_GPS_Sharp.HasGPSFix == false _tgisGPS.Satellites < 3)
+                // Skickar information till gps-spårningen. Om satellitmottagningen är dålig fås ett varningsmeddelande
                 if (_tgisGPS.Satellites < 3)
                 {
                     infoText.Text = "Varning! Ingen eller dålig GPS-mottagning. Antal satelliter är " + _tgisGPS.Satellites + " st. ";
@@ -229,24 +213,12 @@ namespace SGAB.SGAB_Karta
 
                     //_gpsPoint "nollställs" för att man inte ska luras att tro att man är kvar på föregående plats
                     _gpsPoint = new TGIS_Point();
-                    //_gpsPoint = null;				
-
                 }
                 else
                 {
                     infoText.Text = "";
 
-                    //om mottagningen tidigare varit dålig skapas _gpsPoint på nytt här                    
-                    //if (_gpsPoint. == null)
-                    //{
-                    //    _gpsPoint = new TGIS_Point();
-                    //}
-
-                    // MTTO: 2012-02-17. Kommenterat bort sharp-gps och lagt till tatuk. Tatuk skickar ut
-                    // positionen i radianer så jag konverterar tillbaka till grader med * (180 / Math.PI)
-                    //läser av koordinater från GPSen
-                    //coords.X = _GPS_Sharp.GPRMC.Position.Longitude;
-                    //coords.Y = _GPS_Sharp.GPRMC.Position.Latitude;
+                    // Tatuk skickar ut positionen i radianer så jag konverterar tillbaka till grader med * (180 / Math.PI)
                     SGAB_Karta.Point coords = new SGAB_Karta.Point();
                     coords.X = _tgisGPS.Longitude * (180 / Math.PI); 
                     coords.Y = _tgisGPS.Latitude * (180 / Math.PI);
