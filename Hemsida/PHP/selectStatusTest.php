@@ -5,21 +5,27 @@ $password="2ykgB03hnx"; // Mysql password
 $db_name="sg_systemet_com"; // Database name 
 $tbl_name="SG_Test_Status"; // Table name 
 
-// Connect to server and select database.
-mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
-mysql_select_db("$db_name")or die("cannot select DB");
+// Anger att det är text som skall produceras. 
+header('Content-type: text/plain');
+
+// Connect to server and select databse.
+$con = mysqli_connect($host, $username, $password, $db_name);
+if ($mysqli->connect_errno) {
+    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+    exit();
+}
 
 // Select
 $sql="SELECT * FROM `$tbl_name`";
-$result=mysql_query($sql);
+$result = $con->query($sql);
+$row = $result->fetch_array(MYSQLI_ASSOC);
 
 // To .NET
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 echo "\n";
 echo "<MessageXML>";
 echo "\n";
-
-while($row = mysql_fetch_array($result))
+while($row = $result->fetch_assoc())
 {
 	echo "<Status>";
 	echo "\n";
@@ -39,5 +45,7 @@ while($row = mysql_fetch_array($result))
 	echo "\n";
 }
 echo "</MessageXML>";
-mysql_close();
+
+$result->free();
+$con->close();
 ?>

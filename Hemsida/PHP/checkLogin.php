@@ -27,7 +27,6 @@ $mypassword = $con->real_escape_string($mypassword);
 
 $sql="SELECT * FROM `$tbl_name` WHERE `Anvandarnamn`='" . $myusername . "' and `Losenord`='" . $mypassword . "'";
 $result = $con->query($sql);
-
 $row = $result->fetch_array(MYSQLI_ASSOC);
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
