@@ -5,9 +5,15 @@ $password="2ykgB03hnx"; // Mysql password
 $db_name="sg_systemet_com"; // Database name 
 $tbl_name="SG_Reservobjekt"; // Table name 
 
+// Anger att det är text som skall produceras. 
+header('Content-type: text/plain');
+
 // Connect to server and select databse.
-mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
-mysql_select_db("$db_name")or die("cannot select DB");
+$con = mysqli_connect($host, $username, $password, $db_name);
+if ($mysqli->connect_errno) {
+    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+    exit();
+}
 
 // ID and Text sent from form .NET
 $OrderID     =$_POST['OrderID']; 
@@ -18,16 +24,10 @@ $Areal_ha    =$_POST['Areal_ha'];
 $Giva_KgN_ha =$_POST['Giva_KgN_ha'];
 $Kommentar   =$_POST['Kommentar'];
 
-// To protect MySQL injection (more detail about MySQL injection)
-//$myID = stripslashes($myID);
-//$myText = stripslashes($myText);
-//$myID = mysql_real_escape_string($myID);
-//$myText = mysql_real_escape_string($myText);
-
 // Insert Into
 $sql="INSERT INTO `$tbl_name` VALUES ('$OrderID' ,'$Objektnr' ,'$Avdnr' ,'$Avdnamn' ,'$Areal_ha' ,'$Giva_KgN_ha' ,'$Kommentar')";
-$result=mysql_query($sql);
-$rc = mysql_affected_rows();
+$result = $con->query($sql);
+$rc = $con->affected_rows;
 
 // Checks if success
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -49,5 +49,6 @@ echo "</Data>";
 echo "\n";
 echo "</MessageXML>";
 
-mysql_close();
+$result->free();
+$con->close();
 ?>
