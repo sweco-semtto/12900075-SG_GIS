@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using SharpGis.SharpGps;
 using TatukGIS.NDK;
 using TatukGIS.NDK.WinForms;
 
@@ -11,7 +11,7 @@ namespace SGAB.GPSTracking
 {
     public delegate void UserRegisterMapOrGPSErrorHandler(object sender, EventArgs e);
 
-    public class GPSTracker : ITrackerBase, ITrackerChangePositionInMap, ITrackerFromSharpGPS, ITrackerFromTatukGIS
+    public class GPSTracker : ITrackerBase, ITrackerChangePositionInMap, ITrackerFromTatukGIS
     {
         /// <summary>
         /// Event som registerar när användaren tycker på knappen för ett kart- eller gpsfel och felet registeras. 
@@ -182,7 +182,7 @@ namespace SGAB.GPSTracking
         /// <summary>
         /// Responds to sentence events from GPS receiver
         /// </summary>
-        public void GPSEventHandler(object sender, SharpGis.SharpGps.GPSHandler gpsHandler)
+        public void GPSNmeaEventHandler(object sender, TGIS_GpsNmea gpsNmea)
         {
             if (!TrackGPS)
                 return;
@@ -192,40 +192,45 @@ namespace SGAB.GPSTracking
             TextInTextFile.Append(newLineInTextFile);
 
             // Lägger till Status
-            TextInTextFile.Append("Status: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.Status.ToString());
+            TextInTextFile.Append("Antal sateliter: ");
+            TextInTextFile.Append(gpsNmea.Satellites);
             TextInTextFile.Append(newLineInTextFile);
 
             // Lägger till Position
             TextInTextFile.Append("Latitud: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.Position.Latitude);
+            TextInTextFile.Append(gpsNmea.Latitude);
             TextInTextFile.Append(newLineInTextFile);
             TextInTextFile.Append("Longitud: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.Position.Longitude);
+            TextInTextFile.Append(gpsNmea.Longitude);
             TextInTextFile.Append(newLineInTextFile);
 
             // Lägger till Hastighet
             TextInTextFile.Append("Hastighet: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.Speed.ToString());
+            TextInTextFile.Append(gpsNmea.Speed);
             TextInTextFile.Append(newLineInTextFile);
 
             // Lägger till Kurs
             TextInTextFile.Append("Kurs: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.Course.ToString());
+            TextInTextFile.Append(gpsNmea.Course);
             TextInTextFile.Append(newLineInTextFile);
 
-            // Lägger till Magnetisk variation
-            TextInTextFile.Append("Magnetisk variation: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.MagneticVariation.ToString());
+			// Lägger till Höjd
+			TextInTextFile.Append("Höjd: ");
+			TextInTextFile.Append(gpsNmea.Altitude);
+			TextInTextFile.Append(newLineInTextFile);
+
+			// Lägger till Precision
+			TextInTextFile.Append("Precision: ");
+            TextInTextFile.Append(gpsNmea.PositionPrec);
             TextInTextFile.Append(newLineInTextFile);
 
-            // Lägger till Kurs
-            TextInTextFile.Append("Kurs: ");
-            TextInTextFile.Append(gpsHandler.GPRMC.Course.ToString());
-            TextInTextFile.Append(newLineInTextFile);
+			// Lägger till Tid
+			TextInTextFile.Append("Precision: ");
+			TextInTextFile.Append(gpsNmea.PositionTime);
+			TextInTextFile.Append(newLineInTextFile);
 
-            // Lägger till sluttag. 
-            TextInTextFile.Append("--------------------");
+			// Lägger till sluttag. 
+			TextInTextFile.Append("--------------------");
             TextInTextFile.Append(newLineInTextFile);
             TextInTextFile.Append(newLineInTextFile);
 
@@ -237,7 +242,7 @@ namespace SGAB.GPSTracking
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void GPSRawGPRMCEventHandler(object sender, SharpGis.SharpGps.GPSHandler.GPSEventArgs e)
+        public void GPSRawGPRMCEventHandler(object sender, TGIS_GpsNmeaEventArgs e)
         {
             if (!TrackGPS)
                 return;
@@ -249,12 +254,28 @@ namespace SGAB.GPSTracking
             TextInTextFile.Append(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
             TextInTextFile.Append(newLineInTextFile);
 
-            TextInTextFile.Append(e.Sentence);
+            TextInTextFile.Append(e.Name);
             TextInTextFile.Append(newLineInTextFile);
-            TextInTextFile.Append("******");
+			TextInTextFile.Append(WriteSentence(e.Items));
+			TextInTextFile.Append(newLineInTextFile);
+			TextInTextFile.Append("******");
             TextInTextFile.Append(newLineInTextFile);
             TextInTextFile.Append(newLineInTextFile);
         }
+
+		/// <summary>
+		/// Skriver ut hela meningen från gps:en. 
+		/// </summary>
+		/// <param name="sentence">Meningen som skall skrivas upp. </param>
+		/// <returns></returns>
+		protected string WriteSentence(ArrayList sentence)
+		{
+			StringBuilder ans = new StringBuilder();
+			foreach (Object part in sentence)
+				ans.Append(((string)part).ToString());
+
+			return ans.ToString();
+		}
 
         /// <summary>
         /// Skriver till fil om längden är för stor. 
@@ -400,26 +421,6 @@ namespace SGAB.GPSTracking
         /// <param name="dE">Det eukliska avståndet. </param>
         /// <param name="pointOfCompass">Anger vilket väderstreck som pilen visar. </param>
         void ChangeArrow(double oldX, double oldY, double newX, double newY, double dX, double dY, double dE, string pointOfCompass);
-    }
-
-    /// <summary>
-    /// Interface som talar om vilka metoder gpsspårningen skall ha. 
-    /// </summary>
-    public interface ITrackerFromSharpGPS : ITrackerChangePositionInMap
-    {
-        /// <summary>
-        /// En handler som tar emot förädlade gps-signaler ifrån SharpGPS. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="gpsHandler"></param>
-        void GPSEventHandler(object sender, SharpGis.SharpGps.GPSHandler gpsHandler);
-
-        /// <summary>
-        /// En handler som tar emot rådata ifrån SharpGps. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void GPSRawGPRMCEventHandler(object sender, SharpGis.SharpGps.GPSHandler.GPSEventArgs e);
     }
 
     /// <summary>

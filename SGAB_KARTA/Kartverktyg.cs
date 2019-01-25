@@ -160,9 +160,10 @@ namespace SGAB.SGAB_Karta
                         _tgisKarta.Open(projectFilePath, true);
                         _tgisKarta.SetCSByEPSG(3006); //CS hårdkodas till SWEREF99 TM
                     }
-                    catch (Exception e)
+                    catch (Exception ex)
                     {
-                        string error = e.Message;
+                        string error = ex.Message;
+						Log.LogMessage("Kan inte läsa in kartlager: \n " + ex.Message, _karta.Configuration.LogFilePath);
 
                         //ingenting sker om ett lager i projektfilen inte kan läsas
                     }

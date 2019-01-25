@@ -60,7 +60,8 @@ namespace SGAB
             IAdmin admin = dllLoader.LoadAdmin();
             bool ans = admin == null ? false : true;
 
-            return ans;
+			return true;
+            //return ans;
         }
     }
 }

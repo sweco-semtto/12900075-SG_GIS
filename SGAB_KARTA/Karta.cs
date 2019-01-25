@@ -14,7 +14,6 @@ using TatukGIS.NDK.WinForms;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Collections;
-using SharpGis.SharpGps;
 using System.Collections.Generic;
 
 namespace SGAB.SGAB_Karta
@@ -29,21 +28,15 @@ namespace SGAB.SGAB_Karta
 
     public partial class Karta : UserControl
     {
-        /* added by me */
         private IconManager _IconManager;
         IList<string> _Selected;
 
-        //definierar en instans av de olika 'hjälpklasserna'
+        // Definierar en instans av de olika 'hjälpklasserna'
         private Kartverktyg _kartverktyg;
         private Urval _urval; 
         private Measure _measure;
         private GPSHandler _gpsHandler;
-        private TGIS_GpsNmea Gps;
-
-        /// <summary>
-        /// GPS-handler ifrån Sharp GPS. 
-        /// </summary>
-        private SharpGis.SharpGps.GPSHandler _GPS_Sharp;
+        private TGIS_GpsNmea _gps;
 
         private System.Windows.Forms.Label infoText;
         private System.Windows.Forms.Timer timer1;
@@ -72,11 +65,6 @@ namespace SGAB.SGAB_Karta
         private const int OFFSET_SPLITTER_LEGEND = 160;
 
         private int _offsetSplitterLegend = 160;
-
-        //ska tas bort när GPS-demo inte är aktuellt längre
-        //******************************************************************
-        //private int _i = 0;
-        //******************************************************************
 
         /// <summary>
         /// Hämtar eller sätter GPS-spåraren. 
@@ -147,12 +135,8 @@ namespace SGAB.SGAB_Karta
         {
             InitializeComponent();
 
-            // Skapar det nya GPS-sharp objektet
-            _GPS_Sharp = new SharpGis.SharpGps.GPSHandler(this);
-            // MTTO: 2012-02-17. Hittade inte Gps i gränssnittet så jag har ej kunnat ta bort den. Har lagt till
-            // ett nytt TGIS_GpsNmea objekt för att få gps-signalen att fungera. Annars tog bara gamla Gps emot
-            // signalen men tolkade inte den. 
-            Gps = tgiS_GpsNmea1;
+            // Skapar det nya GPS objektet m.fl. 
+            _gps = tgiS_GpsNmea1;
             _IconManager = new IconManager();
             _IconManager.InitIconManager();
             _Selected = new List<string>();
@@ -171,30 +155,28 @@ namespace SGAB.SGAB_Karta
         {
             try
             {
-                //skapar en instans av de olika 'hjälpklasserna'               
+                // Skapar en instans av de olika 'hjälpklasserna'               
                 _kartverktyg = new Kartverktyg(tgisKarta, toolStrip, this);
                 _urval = new Urval(tgisKarta);                                         
                 _measure = new Measure(tgisKarta);
                 
-                //sätter storlek och splitdistans på panelen
+                // Sätter storlek och splitdistans på panelen
                 this.splitPanel.Size = new System.Drawing.Size(this.Width, this.Height - OFFSET_HEIGHT_PANEL);
                 this.splitPanel.SplitterDistance = splitPanel.Width - OFFSET_SPLITTER_LEGEND;
 
-                //sätter utseende, längd och placering på skalstocken
+                // Sätter utseende, längd och placering på skalstocken
                 tgisScale.BorderStyle = BorderStyle.None;
 
-                //_gpsHandler = new GPSHandler(tgisKarta, Gps, _GPS_Sharp);
-                //_gpsHandler = new GPSHandler(tgisKarta, _GPS_Sharp);
-                _gpsHandler = new GPSHandler(tgisKarta, Gps);
+                _gpsHandler = new GPSHandler(tgisKarta, _gps);
                 _gpsHandler.GpsTracker = this.GpsTracker;
-                _gpsHandler.GpsTracker.MapOrGPSError += new SGAB.GPSTracking.UserRegisterMapOrGPSErrorHandler(GpsTracker_MapOrGPSError);
-                _ErrorTimer = new Timer();
+				_gpsHandler.GpsTracker.MapOrGPSError += new SGAB.GPSTracking.UserRegisterMapOrGPSErrorHandler(GpsTracker_MapOrGPSError);
+
+				_ErrorTimer = new Timer();
                 _ErrorTimer.Interval = 1000;
                 _ErrorTimer.Enabled = true;
                 _ErrorTimer.Tick += new System.EventHandler(OnErrorTimerEvent);
-                //_gpsHandler = new GPSHandler(tgisKarta, Gps);
 
-                //laddar kartdata
+                // Laddar kartdata
                 _kartverktyg.LaddaKartData();
                 startplatsLayer = _kartverktyg.LaddaStartplatser();
                 startplatsLayer.PaintShape += PaintShape;
@@ -204,25 +186,12 @@ namespace SGAB.SGAB_Karta
 
                 StartGPS();
 
-                //sätter aktivt lager  // Sätter ej det gamla beställningslagret till aktivt. 
-                //TGIS_LayerAbstract ll = (TGIS_LayerAbstract) tgisKarta.Get(Configuration.NamnBestallningsLager);
-                //tgisLegend.GIS_Layer = ll;
-
-                //förbereder för att kunna mäta och selektera
+                // Förbereder för att kunna mäta och selektera
                 _measure.PrepareMeasureLine();
                 _measure.PrepareMeasureAreal();
-                _urval.PrepareSelectPolygon();
-
-                /*added by me*/ // Kommenterar bort det gamla beställnignslagret. 
-                //TGIS_LayerSHP layerBestallning = (TGIS_LayerSHP)tgisKarta.Get(ConfigurationManager.AppSettings["NamnBestallningsLager"]);
-                //layerBestallning.PaintShape += PaintShape;
-                //layerBestallning.CachedPaint = true;
-               
-                //tror inte att Units behöver sättas, det framgår nog av projketfilen
-                //tgisKarta.Units.Units = TGIS_UnitsType.gisUnitsTypeMeter;
-              
+                _urval.PrepareSelectPolygon();             
                 
-                //CS hårdkodas till SWEREF99 TM för att scalebar ska fungera
+                // CS hårdkodas till SWEREF99 TM för att scalebar ska fungera
                 foreach (var item in tgisKarta.Items)
                 {
                     TGIS_LayerAbstract lyr = (TGIS_LayerAbstract)item;
@@ -231,7 +200,7 @@ namespace SGAB.SGAB_Karta
                 }
 
 
-                // startar en synkroniseringstimer
+                // Startar en synkroniseringstimer
                 SynchronizeTimer.Start();
             }
             catch (MapException mex)
@@ -275,6 +244,17 @@ namespace SGAB.SGAB_Karta
                     Log.LogMessage("FormatException + " + fex.Message, Configuration.LogFilePath);
                 }
             }
+			catch (InvalidOperationException ioex)
+			{
+
+				infoText.Text = "Finns inga startplatser för årets säsong än. ";
+				infoText.Visible = true;
+
+				if (Configuration.LogExceptions)
+				{
+					Log.LogMessage("Finns inga startplatser för årets säsong än: InvalidOperationException + " + ioex.Message, Configuration.LogFilePath);
+				}
+			}
             catch (Exception ex)
             {
                 infoText.Text = ex.Message;
@@ -304,8 +284,6 @@ namespace SGAB.SGAB_Karta
             lblMapOrGPSError.Visible = false;
             //lblMapOrGPSError.Text = "";
         }
-
-        /* aded by me */
 
         public bool Select(string id)
         {
@@ -364,7 +342,6 @@ namespace SGAB.SGAB_Karta
             }
             int status = int.Parse(strStatus);
             shape.Params.Marker.Symbol = null;
-            //shape.Params.Marker.Symbol = new TGIS_SymbolPicture(@"C:\SG_GIS_Databas\Bilder\StoraEnso0.png");
             shape.Params.Marker.Symbol = _IconManager.GetIcon(companyName,
                                                               status,
                                                               _Selected.Contains(shape.GetField("Mi_prinx").ToString()));
@@ -427,7 +404,6 @@ namespace SGAB.SGAB_Karta
                 UnselectAllStartplatser(this, new EventArgs());
         }
 
-        //TGIS_Shape _shape;
         private void tgisKarta_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             try
@@ -528,10 +504,8 @@ namespace SGAB.SGAB_Karta
 
                     }
                 }
-                /* added by me */
                 else if (e.Button == MouseButtons.Right)
                 {
-                    //TGIS_LayerSHP layerBestallning = (TGIS_LayerSHP)tgisKarta.Get(ConfigurationManager.AppSettings["NamnBestallningsLager"]);
                     TGIS_LayerAbstract layerBestallning = startplatsLayer;
                     _urval._activeLayer = layerBestallning;
                     _urval.SelectSingle(e.X, e.Y);
@@ -540,10 +514,10 @@ namespace SGAB.SGAB_Karta
                         TGIS_Shape shape = (TGIS_Shape)_urval._shapes[0];
 
                         ContextMenu menue = new ContextMenu();
-                        menue.MenuItems.Add(new MenuItem("Ej påbörjad", Menue_Click));
-                        menue.MenuItems.Add(new MenuItem("Gödsel utkörd", Menue_Click));
-                        menue.MenuItems.Add(new MenuItem("Färdiggödslat", Menue_Click));
-                        menue.MenuItems.Add(new MenuItem("Säckar hämtade", Menue_Click));
+                        menue.MenuItems.Add(new MenuItem("Ej påbörjad", Menu_Click));
+                        menue.MenuItems.Add(new MenuItem("Gödsel utkörd", Menu_Click));
+                        menue.MenuItems.Add(new MenuItem("Färdiggödslat", Menu_Click));
+                        menue.MenuItems.Add(new MenuItem("Säckar hämtade", Menu_Click));
                         menue.Show(this, new System.Drawing.Point(e.X, e.Y));
                     }
                 }
@@ -562,8 +536,7 @@ namespace SGAB.SGAB_Karta
             }
         }
         
-        /* added by me */
-        void Menue_Click(object sender, EventArgs e)
+        void Menu_Click(object sender, EventArgs e)
         {
             MenuItem menueItem = (MenuItem)sender;
             TGIS_Shape shp = (TGIS_Shape)_urval._shapes[0];
@@ -605,14 +578,11 @@ namespace SGAB.SGAB_Karta
           
             try
             {
-                //visa mapHints
-                TGIS_Point ptg;
-                //TGIS_Shape shp;
-                //string mapHint;
+                if (tgisKarta.IsEmpty)
+					return;
 
-                if (tgisKarta.IsEmpty) return;
-
-                ptg = tgisKarta.ScreenToMap(new System.Drawing.Point(e.X, e.Y));
+				//visa mapHints
+				TGIS_Point ptg = tgisKarta.ScreenToMap(new System.Drawing.Point(e.X, e.Y));
 
                 //visa aktuell koordinat position
                 lblX.Text = String.Format("{0:F0}", ptg.Y);
@@ -1075,12 +1045,9 @@ namespace SGAB.SGAB_Karta
             {
                 _gpsHandler.CreateGPSLayerRT90();
 
-                Gps.Com = Configuration.GPSPort;
-                Gps.BaudRate = Configuration.GPSBaudRate;
-                Gps.Active = true;
-
-                // Startar GPS-Sharp, med rätt com-port och baud rate. 
-                //_GPS_Sharp.Start("COM" + Configuration.GPSPort.ToString(), Configuration.GPSBaudRate);
+                _gps.Com = Configuration.GPSPort;
+                _gps.BaudRate = Configuration.GPSBaudRate;
+                _gps.Active = true;
 
                 timer1.Interval = Configuration.GPSIntervall;
                 timer1.Start();               
@@ -1107,8 +1074,7 @@ namespace SGAB.SGAB_Karta
             try
             {
                 timer1.Enabled = false;
-                //_GPS_Sharp.Stop();
-                Gps.Active = false;
+                _gps.Active = false;
             }
             catch (Exception ex)
             {
@@ -1131,22 +1097,9 @@ namespace SGAB.SGAB_Karta
                     try
                     {
                         _timer1Lock = true;
-                        //Uppdaterar GPS-positionen                
-                        _gpsHandler.ChangeGPSPosition(infoText, _kartverktyg._pan);
-                        //Log.LogMessage("timer1_Tick + " + tgisKarta.Get("GPSlager").IsOpened, _configuration.LogFilePath);
-
-                        //ska tas bort när demo inte är aktuellt längre
-                        //******************************************************************
-                        //infoText.Text = _gpsHandler.DemoGPSposition(_i, _kartverktyg._pan);
-                        //if (_i < 16)
-                        //{
-                        //    _i = _i + 1;
-                        //}
-                        //else
-                        //{
-                        //    _i = 0;
-                        //}
-                        //******************************************************************
+					
+						//Uppdaterar GPS-positionen                
+						_gpsHandler.ChangeGPSPosition(infoText, _kartverktyg._pan);
                     }
 
                     finally
@@ -1185,32 +1138,15 @@ namespace SGAB.SGAB_Karta
         {
             try
             {
-                /* added by me */
                 FormCloseLayer closeLayerForm = new FormCloseLayer(_kartverktyg.Layers, tgisKarta);
                 closeLayerForm.ShowDialog();
                 _kartverktyg.SaveProjectFile();
-                //justerar vilka knappar som ska vara intryckta
+
+                // Justerar vilka knappar som ska vara intryckta
                 _kartverktyg.ChangeTool("btnRemove");
 
                 tgisLegend.Refresh();
                 tgisKarta.Update();
-
-                /*string layerName = tgisLegend.GIS_Layer.Name;
-   
-
-                DialogResult dr = MessageBox.Show("Vill du ta bort " + layerName + " från kartan?", "Ta bort", MessageBoxButtons.YesNo);
-
-                if (dr == DialogResult.Yes)
-                {
-                    tgisKarta.Delete(layerName);
-                    tgisLegend.Refresh();
-                    tgisKarta.Refresh();
-                }
-
-                //justerar vilka knappar som ska vara intryckta
-                _kartverktyg.ChangeTool("btnRemove");*/
-
-
             }
            catch (Exception ex)
             {
@@ -1245,7 +1181,7 @@ namespace SGAB.SGAB_Karta
 
                 tgisKarta.VisibleExtent = layer.Extent;
 
-                //justerar vilka knappar som ska vara intryckta
+                // Justerar vilka knappar som ska vara intryckta
                 _kartverktyg.ChangeTool("btnLayerExtent");
 
             }
@@ -1291,8 +1227,6 @@ namespace SGAB.SGAB_Karta
                 }
 
                 ExceptionHandler.HandleException(ex);
-            
-                //MessageBox.Show(ex.Message, "Fel vid export av bildfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -4,6 +4,7 @@ using System.Text;
 using SharpMap.CoordinateSystems;
 using SharpMap.CoordinateSystems.Transformations;
 using SharpMap.Converters.WellKnownText;
+using TatukGIS.NDK;
 
 namespace SGAB.SGAB_Karta
 {
@@ -99,11 +100,45 @@ namespace SGAB.SGAB_Karta
         }
     }
 
-    
-    /// <summary>
-    /// Klass för att transformera koordinater
-    /// </summary>
-    public class CoordinateTransform
+	/// <summary>
+	/// Transformerar från WGS84 till RT 90 2,5 gon V. 
+	/// </summary>
+	public class Tatuk_CoordinateTransform
+	{
+		/// <summary>
+		/// Definitionen för WGS 84. 
+		/// </summary>
+		protected TGIS_CSCoordinateSystem cs_in_wgs84;
+
+		/// <summary>
+		/// Definitionen för RT 90 2,5 gon V. 
+		/// </summary>
+		protected TGIS_CSCoordinateSystem cs_out_RT90;
+
+		/// <summary>
+		/// Skapar en ny koordinattransformation. 
+		/// </summary>
+		public Tatuk_CoordinateTransform()
+		{
+			cs_in_wgs84 = TGIS_CSFactory.ByEPSG(4326);
+			cs_out_RT90 = TGIS_CSFactory.ByEPSG(3021);
+		}
+
+		/// <summary>
+		/// Transformerar från WGS84 till RT 90 2,5 gon V. Observera att koordinaterna skall skickas in longitud och sedan latitud. 
+		/// </summary>
+		/// <param name="coordinate"></param>
+		/// <returns></returns>
+		public TGIS_Point Transform(TGIS_Point coordinate)
+		{
+			return cs_out_RT90.FromCS(cs_in_wgs84, coordinate);
+		}
+	}
+
+	/// <summary>
+	/// Klass för att transformera koordinater
+	/// </summary>
+	public class CoordinateTransform
     {
         private ICoordinateTransformation _coordTrans;
         /// <summary>

@@ -83,7 +83,7 @@ namespace SGAB.SGAB_Karta
             this.infoText = new System.Windows.Forms.Label();
             this.lblObjektAreal = new System.Windows.Forms.Label();
             this.dlgSaveImage = new System.Windows.Forms.SaveFileDialog();
-            this.Gps = new TatukGIS.NDK.WinForms.TGIS_GpsNmea();
+            this._gps = new TatukGIS.NDK.WinForms.TGIS_GpsNmea();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.GIS_ControlPrintPreviewSimple = new TatukGIS.NDK.WinForms.TGIS_ControlPrintPreviewSimple();
             this.tgiS_GpsNmea1 = new TatukGIS.NDK.WinForms.TGIS_GpsNmea();
@@ -695,16 +695,16 @@ namespace SGAB.SGAB_Karta
             // 
             // Gps
             // 
-            this.Gps.Active = false;
-            this.Gps.BaudRate = 4800;
-            this.Gps.Com = 1;
-            this.Gps.Location = new System.Drawing.Point(0, 56);
-            this.Gps.Name = "Gps";
-            this.Gps.Size = new System.Drawing.Size(16, 160);
-            this.Gps.TabIndex = 29;
-            this.Gps.Text = " ";
-            this.Gps.Timeout = 1000;
-            this.Gps.Visible = false;
+            this._gps.Active = false;
+            this._gps.BaudRate = 4800;
+            this._gps.Com = 1;
+            this._gps.Location = new System.Drawing.Point(0, 56);
+            this._gps.Name = "Gps";
+            this._gps.Size = new System.Drawing.Size(16, 160);
+            this._gps.TabIndex = 29;
+            this._gps.Text = " ";
+            this._gps.Timeout = 1000;
+            this._gps.Visible = false;
             // 
             // timer1
             // 
@@ -745,7 +745,7 @@ namespace SGAB.SGAB_Karta
             this.Controls.Add(this.groupBoxLabels);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.splitPanel);
-            this.Controls.Add(this.Gps);
+            this.Controls.Add(this._gps);
             this.Name = "Karta";
             this.Size = new System.Drawing.Size(1016, 766);
             this.Load += new System.EventHandler(this.Karta_Load);

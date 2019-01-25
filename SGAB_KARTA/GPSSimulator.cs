@@ -39,9 +39,6 @@ namespace SGAB.SGAB_Karta
             using (StreamReader reader = new StreamReader(textBoxLoggPath.Text))
             {
                 string lineToParse;
-
-                int a = 0;
-
                 while ((lineToParse = reader.ReadLine()) != null)
                 {
                     // parsar raden
