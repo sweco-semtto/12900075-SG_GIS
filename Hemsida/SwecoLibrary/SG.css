@@ -26,3 +26,12 @@ td.x-grid3-hd-over .x-grid3-hd-inner,td.sort-desc .x-grid3-hd-inner,td.sort-asc 
  td.Uppgifter {
 	font-size: 10pt;
  }
+ 
+ .info {
+	height: 22px;
+	width: 22px%;
+ }
+ 
+ .infoText {
+	color: #008CBA;
+ }

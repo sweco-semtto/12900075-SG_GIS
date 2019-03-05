@@ -50,8 +50,8 @@ Ext.onReady(function(){
            editor: new fm.NumberField({
                allowBlank: false,
                allowNegative: false,
-			   minValue: 6130000,
-               maxValue: 7680000
+			   minValue: 6126000,
+               maxValue: 7693000
            })
 		},{
 		   header: "Koord Ö",
@@ -62,8 +62,8 @@ Ext.onReady(function(){
            editor: new fm.NumberField({
                allowBlank: false,
                allowNegative: false,
-			   minValue: 1220000,
-               maxValue: 1880000
+			   minValue: 218000,
+               maxValue: 1084000
            })
 		},{
 		   header: "Areal ha",

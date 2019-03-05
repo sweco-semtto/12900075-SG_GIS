@@ -18,7 +18,7 @@ if ($mysqli->connect_errno) {
 // Hämtar endast startplatser för senaste säsongen. 
 $dateFormatYear = date('Y');
 $date = date($dateFormatYear, time());
-$date = $date -1;
+$date = $date - 1;
 $dateLimit = $date . "0901";
 
 // Select
