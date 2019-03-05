@@ -2,8 +2,11 @@
 
 require 'PHPMailer-master/PHPMailerAutoload.php';
 
-$number = 13;
-$xml = '<xml>&#xD;<tag_abc>abc</tag_abc>&#xD;<tom_tag></tom_tag>&#xD;<tag_def>def</tag_def>&#xD;</xml>';
+//$number = 13;
+//$xml = '<xml>&#xD;<tag_abc>abc</tag_abc>&#xD;<tom_tag></tom_tag>&#xD;<tag_def>def</tag_def>&#xD;</xml>';
+
+$ordernummer = $_POST['ordernummer'];
+$xml = $_POST['xml']; 
 
 # Ersätter alla <- och >-tecken
 $xml = str_replace("<", "&lt;", $xml);
@@ -27,7 +30,7 @@ $mail->FromName = 'Skogens Gödsling';
 #$mail->addAddress('karolina.erikers@yara.com');
 $mail->addAddress('martin.thorbjornsson@sweco.se');
 
-$mail->Subject = 'Testmejl från Skogens Gödsling, ' . $number;
+$mail->Subject = 'Testmejl från Skogens Gödsling, ' . $ordernummer;
 #$mail->Body = 'HTML-body <b>Test fetstil!</b>';
 $mail->Body = 'HTML: <pre>' . $xml . '</pre>';
 $mail->AltBody = 'Vanlig "plain" text: ' . $xml;
@@ -36,10 +39,10 @@ $mail->isHTML(false);
 $mail->AuthType = 'PLAIN';
 
 if(!$mail->send()) {
- echo 'Kan inte skicka mejl. ' . $number;
+ echo 'Kan inte skicka mejl. ' . $ordernummer;
  echo 'Felmeddelande: ' . $mail->ErrorInfo;
 } else {
- echo 'Mejl är skickat. ' . $number;
+ echo 'Mejl är skickat. ' . $ordernummer;
 }
 
 ?>

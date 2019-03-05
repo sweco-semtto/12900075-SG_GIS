@@ -21,8 +21,14 @@
 
 <p class="headLine"><b> Beställningsformulär SG-systemet</b></p><br>
 	
-	<input type="button" value="Hjälp" onclick="window.open('http://www.sg-systemet.com/bestallning/Bestallningsformularshjalp.html', '', 'scrollbars=1,resizable=1,width=800,height=600');"/>
+	<div>
+		<img class="info" src="SwecoLibrary/Info.jpg">
+	</div>
+	<b class="infoText">Fält med * är obligatoriska uppgifter att fylla i. </b>
+	<!--<br><br>
 	
+	<input type="button" value="Hjälp" onclick="window.open('http://www.sg-systemet.com/bestallning/Bestallningsformularshjalp.html', '', 'scrollbars=1,resizable=1,width=800,height=600');"/>
+	-->
 	<br>
 	<br>
 	
@@ -37,7 +43,7 @@
 			<td width="40">
 			</td>
 			<td class="Uppgifter">
-				Organisationsnummer:
+				*Organisationsnummer:
 			</td>
 			<td>
 				<input type="text" size="30" name="VAT">
@@ -45,7 +51,7 @@
 		</tr>
 		<tr>
 			<td class="Uppgifter">
-				Faktureringsadress: 
+				*Faktureringsadress: 
 			</td>
 			<td>
 				<input type="text" size="30" name="FAdress">
@@ -85,7 +91,7 @@
 			<td width="40">
 			</td>
 			<td class="Uppgifter">
-				Beställningsreferens:
+				*Beställningsreferens:
 			</td>
 			<td>
 				<input type="text" size="30" name="Bestallningsreferens">
@@ -134,7 +140,7 @@
 		</tr>
 		<tr>
 			<td class="Uppgifter">
-				*Telefon arb:
+				Telefon arb:
 			</td>
 			<td>
 				<input type="text" size="20" name="TfnArb1">
@@ -198,37 +204,55 @@
 		</tr>
 	</table>
 
-	<br>
-	<br>
+	<br><br>
+
 	<div>
-		Välj koordinatsystem: 
-		<br>
-		<input type="radio" name="Koord" value="RT90" checked="checked" onclick="UpdateCoordinates(0)" /> RT 90 2,5 gonV
-		<input type="radio" name="Koord" value="SWEREF99" onclick="UpdateCoordinates(1)" /> SWEREF99 TM
+		<img class="info" src="SwecoLibrary/Info.jpg">
 	</div>
-	<br>
+	<b class="infoText">
+	1. Klicka på "Lägg till" för varje ny rad<br>
+	2. Objektnr tilldelas automatiskt. Objekt avser en eller flera sammanhängande avdelningar som ska gödslas.<br>
+	3. Startplats = Gemensam plats för de gödslingsobjekt som ligger inom 1 km längs väg. OBS viktigt att startplats återfinns på kartan.<br>
+	4. 15O kg N/ha motsvarar 0,555 ton Skog-CAN. Räknas ut manuellt. Använd kommatecken som skiljetecken.<br>
+	5. Arealen anges som nettoarealen som ska gödslas, frizoner och dylikt inräknas ej.<br>
+	</b><br>
 	
 	<!-- Gridden som man beställer med.  --> 
 	<div id="editor-grid"></div>
-	<div id="editor-grid3"></div>
+	<br><br>
 	
-	<table>
-		<tr>
-			<td>
-		<font size="1">RT 90 2,5 gonV</font><br>
-		<font size="1">Koord N måste ligga inom intervallet 6130000-7680000</font><br>
-		<font size="1">Koord Ö måste ligga inom intervallet 1220000-1880000</font>
-			</td>
-			<td>
-				<font size="1"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
-			</td>
-			<td>
-		<font size="1">SWEREF99 TM</font><br>
-		<font size="1">Koord N måste ligga inom intervallet 6126000-7693000</font><br>
-		<font size="1">Koord Ö måste ligga inom intervallet &nbsp;&nbsp;218000-1084000</font>
-			</td>
-		</tr>
-	</table>
+	<div>
+		<img class="info" src="SwecoLibrary/Info.jpg">
+	</div>
+	<b class="infoText">
+	För varje startplats anges koordinater. Startplatsen bör vara en plats där det är möjligt att ställa av gödselsäckar. <br>
+	Summa Skog-CAN (ton): Totalt antalet ton utgör den faktiska beställningen. 
+	</b>
+	<br><br>
+	<div>
+		Välj koordinatsystem: 
+		<br>
+		<input type="radio" name="Koord" value="RT90" onclick="UpdateCoordinates(0)" /> RT 90 2,5 gonV
+		<input type="radio" name="Koord" value="SWEREF99" checked="checked" onclick="UpdateCoordinates(1)" /> SWEREF99 TM
+	</div>
+	<div id="editor-grid3"></div>
+		<table>
+			<tr>
+				<td>
+			<font size="1">RT 90 2,5 gonV</font><br>
+			<font size="1">Koord N måste ligga inom intervallet 6130000-7680000</font><br>
+			<font size="1">Koord Ö måste ligga inom intervallet 1220000-1880000</font>
+				</td>
+				<td>
+					<font size="1"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font>
+				</td>
+				<td>
+			<font size="1">SWEREF99 TM</font><br>
+			<font size="1">Koord N måste ligga inom intervallet 6126000-7693000</font><br>
+			<font size="1">Koord Ö måste ligga inom intervallet &nbsp;&nbsp;218000-1084000</font>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<br>
 	<br>
@@ -241,6 +265,11 @@
 	<br>
 	<br>
 	
+	<div>
+		<img class="info" src="SwecoLibrary/Info.jpg">
+	</div>
+	<b class="infoText">Summa reservareal (ha): Ange reservareal för gödsel som blir över, som ej kan eller bör spridas inom ordinarie objekt. </b>
+	<br><br>
 	<!-- Gridden som man beställer med.  --> 
 	<div id="editor-grid2"></div>
 	

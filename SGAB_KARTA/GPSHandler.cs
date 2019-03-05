@@ -31,9 +31,9 @@ namespace SGAB.SGAB_Karta
 
         string _srInIni;
         string _srOutIni;
-        CoordinateTransform _coordTrans;
+		Tatuk_CoordinateTransform _coordTrans; //CoordinateTransform _coordTrans;
 
-        TGIS_LayerVector _llGps = new TGIS_LayerVector();
+		TGIS_LayerVector _llGps = new TGIS_LayerVector();
 
 
         TGIS_Point _gpsPoint = new TGIS_Point();
@@ -88,14 +88,12 @@ namespace SGAB.SGAB_Karta
 
         //public GPSHandler(TGIS_ViewerWnd GIS, TGIS_GpsNmea GPS, SharpGis.SharpGps.GPSHandler GPS_Sharp)
         public GPSHandler(TGIS_ViewerWnd GIS, TGIS_GpsNmea GPS)
-       // public GPSHandler(TGIS_ViewerWnd GIS, SharpGis.SharpGps.GPSHandler GPS_Sharp)
         {
             _tgisKarta = GIS;
             _tgisGPS = GPS;
-            //_GPS_Sharp = GPS_Sharp;
 
-            // Hämtar hur stor avvikelse i meter som gäller när pilen skall ändras i kartan. 
-            GPSDeviationInMetersMin = Configuration.GetConfiguration().GPSDeviationInMetersMin;
+			// Hämtar hur stor avvikelse i meter som gäller när pilen skall ändras i kartan. 
+			GPSDeviationInMetersMin = Configuration.GetConfiguration().GPSDeviationInMetersMin;
             GPSDeviationInMetersMax = Configuration.GetConfiguration().GPSDeviationInMetersMax;
         }
 
@@ -114,10 +112,10 @@ namespace SGAB.SGAB_Karta
                 //_obj_prj.SetUp(0.27587170754584828, 0, 1500064.274, -667.711, 0, 0, 0, 1.00000561024, 0, 0, 0, 0, 0, 0, 0);
                 _srInIni = _configuration.srInIni;
                 _srOutIni = _configuration.srOutIni;
-                _coordTrans = new CoordinateTransform(_srInIni, _srOutIni);
+				_coordTrans = new Tatuk_CoordinateTransform(); //new CoordinateTransform(_srInIni, _srOutIni);
 
-                //lägger till lagret i kartan
-                _llGps.Name = "GPSlager";
+				//lägger till lagret i kartan
+				_llGps.Name = "GPSlager";
                 _llGps.CachedPaint = false;
 
                 _tgisKarta.Add((TGIS_LayerAbstract)_llGps);
@@ -179,20 +177,20 @@ namespace SGAB.SGAB_Karta
         /// Skickar gps-rådata till spårningsprogrammet. 
         /// </summary>
         /// <param name="_sender"></param>
-        /// <param name="_e"></param>
-        protected void _tgisGPS_NmeaMessage(object _sender, TGIS_GpsNmeaMessageEventArgs _e)
+        /// <param name="e"></param>
+        protected void _tgisGPS_NmeaMessage(object _sender, TGIS_GpsNmeaMessageEventArgs e)
         {
-            this._GpsTracker.TGIS_GpsNmea_Signal(_e);
+            this._GpsTracker.TGIS_GpsNmea_Signal(e);
         }
 
         /// <summary>
         /// Skickar den tolkade gps-signalen till spårningsprogrammet. 
         /// </summary>
         /// <param name="_sender"></param>
-        /// <param name="_e"></param>
-        protected void _tgisGPS_Nmea(object _sender, TGIS_GpsNmeaEventArgs _e)
+        /// <param name="e"></param>
+        protected void _tgisGPS_Nmea(object _sender, TGIS_GpsNmeaEventArgs e)
         {
-            this._GpsTracker.TGIS_GpsNmea_Signal(_e);
+            this._GpsTracker.TGIS_GpsNmea_Signal(e);
         }
 
         public void ChangeGPSPosition(System.Windows.Forms.Label infoText, bool pan)
@@ -236,18 +234,19 @@ namespace SGAB.SGAB_Karta
                 {
                     infoText.Text = "";
 
-                    //om mottagningen tidigare varit dålig skapas _gpsPoint på nytt här                    
-                    //if (_gpsPoint. == null)
-                    //{
-                    //    _gpsPoint = new TGIS_Point();
-                    //}
+					//om mottagningen tidigare varit dålig skapas _gpsPoint på nytt här                    
+					//if (_gpsPoint. == null)
+					//{
+					//    _gpsPoint = new TGIS_Point();
+					//}
 
-                    // MTTO: 2012-02-17. Kommenterat bort sharp-gps och lagt till tatuk. Tatuk skickar ut
-                    // positionen i radianer så jag konverterar tillbaka till grader med * (180 / Math.PI)
-                    //läser av koordinater från GPSen
-                    //coords.X = _GPS_Sharp.GPRMC.Position.Longitude;
-                    //coords.Y = _GPS_Sharp.GPRMC.Position.Latitude;
-                    SGAB_Karta.Point coords = new SGAB_Karta.Point();
+					// MTTO: 2012-02-17. Kommenterat bort sharp-gps och lagt till tatuk. Tatuk skickar ut
+					// positionen i radianer så jag konverterar tillbaka till grader med * (180 / Math.PI)
+					//läser av koordinater från GPSen
+					//coords.X = _GPS_Sharp.GPRMC.Position.Longitude;
+					//coords.Y = _GPS_Sharp.GPRMC.Position.Latitude;
+					//SGAB_Karta.Point coords = new SGAB_Karta.Point();
+					TGIS_Point coords = new TGIS_Point();
                     coords.X = _tgisGPS.Longitude * (180 / Math.PI); 
                     coords.Y = _tgisGPS.Latitude * (180 / Math.PI);
 

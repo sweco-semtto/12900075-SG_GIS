@@ -5,9 +5,15 @@ $password="2ykgB03hnx"; // Mysql password
 $db_name="sg_systemet_com"; // Database name 
 $tbl_name="SG_Test_Foretag"; // Table name 
 
-// Connect to server and select database.
-mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
-mysql_select_db("$db_name")or die("cannot select DB");
+// Anger att det är text som skall produceras. 
+header('Content-type: text/plain');
+
+// Connect to server and select databse.
+$con = mysqli_connect($host, $username, $password, $db_name);
+if ($mysqli->connect_errno) {
+    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+    exit();
+}
 
 // ID and Text sent from form .NET
 $OrderID=$_POST['OrderID']; 
@@ -16,8 +22,8 @@ $Value=$_POST['Value'];
 
 // Update
 $sql= "UPDATE `$tbl_name` SET `$ColumnName`= '$Value' WHERE `OrderID` = '$OrderID'";
-$result=mysql_query($sql);
-$rc = mysql_affected_rows();
+$result = $con->query($sql);
+$rc = $con->affected_rows;
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 echo "\n";
@@ -39,5 +45,6 @@ echo "</Data>";
 echo "\n";
 echo "</MessageXML>";
 
-mysql_close();
+$result->free();
+$con->close();
 ?>

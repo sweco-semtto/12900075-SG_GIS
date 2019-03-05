@@ -36,7 +36,6 @@ namespace SGAB
 
                 // Laddar in dll:en ifrån mappen. 
                 Assembly assembly = Assembly.LoadFrom(PathToAdminDll);
-
                 // Tar fram typen för att kronstuktorer i dll:en. 
                 Type[] types = assembly.GetTypes();
                 foreach (Type type in types)
@@ -49,7 +48,7 @@ namespace SGAB
                         return ((IAdmin)instance);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
