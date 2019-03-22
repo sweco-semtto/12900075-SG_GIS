@@ -553,33 +553,46 @@ namespace SGAB.SGAB_Database
             StreamPOST.Write(POST, 0, POST.Length);
             StreamPOST.Close();
 
-            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            //Stream Answer = response.GetResponseStream();
-            //StreamReader _Answer = new StreamReader(Answer);
-            //string vystup = _Answer.ReadToEnd();
-            //MessageBox.Show(vystup);
+			//HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+			//Stream Answer = response.GetResponseStream();
+			//StreamReader _Answer = new StreamReader(Answer);
+			//string vystup = _Answer.ReadToEnd();
+			//MessageBox.Show(vystup);
 
-            // Får tillbaka ett svar 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            StreamReader streamResponse = new StreamReader(response.GetResponseStream());
-            DataSet dsTest = new DataSet();
-            dsTest.ReadXml(streamResponse);
-            DataTable dt = dsTest.Tables["MessageXML"];
+			// Får tillbaka ett svar 
+			try
+			{
+				HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+				StreamReader streamResponse = new StreamReader(response.GetResponseStream());
+				DataSet dsTest = new DataSet();
+				dsTest.ReadXml(streamResponse);
+				DataTable dt = dsTest.Tables["MessageXML"];
 
-            if (dt.Rows.Count > 0)
-            {
-                if (dt.Columns.Contains("Data")) //INSERT/UPDATE/DELETE
-                {
-                    if (dt.Rows[0]["Data"].ToString().Contains("Failure"))
-                    {
-                        errors++;
-                        result = "Fel vid uppdatering av databasen: " + dt.Rows[0]["Data"].ToString();
-                        ex.AddError(requestUrlString, row);
-                    }
-                    else
-                        result = "Uppdatering av databasen genomförd: " + dt.Rows[0]["Data"].ToString();
-                }
-            }
-        }
+				if (dt.Rows.Count > 0)
+				{
+					if (dt.Columns.Contains("Data")) //INSERT/UPDATE/DELETE
+					{
+						if (dt.Rows[0]["Data"].ToString().Contains("Failure"))
+						{
+							errors++;
+							result = "Fel vid uppdatering av databasen: " + dt.Rows[0]["Data"].ToString();
+							ex.AddError(requestUrlString, row);
+						}
+						else
+							result = "Uppdatering av databasen genomförd: " + dt.Rows[0]["Data"].ToString();
+					}
+				}
+			}
+			catch (WebException webex)
+			{
+				WebResponse errResp = webex.Response;
+				using (Stream respStream = errResp.GetResponseStream())
+				{
+					StreamReader reader = new StreamReader(respStream);
+					string text = reader.ReadToEnd();
+					MessageBox.Show("Problem med att synka databasen:\n" + text, "Synkningsproblem", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+			}
+		}
     }
 }

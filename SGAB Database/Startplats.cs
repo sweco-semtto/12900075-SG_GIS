@@ -244,7 +244,7 @@ namespace SGAB.SGAB_Database
         }
 
         /// <summary>
-        /// Fyller på enadt med startplatser som stämmer överrens med ORderId:na.
+        /// Fyller på enast med startplatser som stämmer överrens med OrderId:na.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="dataGridView"></param>
@@ -256,7 +256,7 @@ namespace SGAB.SGAB_Database
                 if (OrderIDs.Contains(row["OrderID"].ToString()))
                 {
                     int newRowIndex = dataGridView.Rows.Add();
-                    for (int itemNo = 0; itemNo < row.ItemArray.Length; itemNo++)
+                    for (int itemNo = 0; itemNo < Math.Min(row.ItemArray.Length, dataGridView.Columns.Count); itemNo++)
                         dataGridView.Rows[newRowIndex].Cells[itemNo].Value =
                             TranslatorMySqlAndAccess.MySql_To_Access(row.ItemArray[itemNo].ToString());
                 }

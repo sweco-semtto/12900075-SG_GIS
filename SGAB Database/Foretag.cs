@@ -153,7 +153,7 @@ namespace SGAB.SGAB_Database
             emptyMySqlDataTable.Columns.Add("Ort", System.Type.GetType("System.String"));
             emptyMySqlDataTable.Columns.Add("Region_Forvaltning", System.Type.GetType("System.String"));
             emptyMySqlDataTable.Columns.Add("Distrikt_Omrade", System.Type.GetType("System.String"));
-            emptyMySqlDataTable.Columns.Add("Lan", System.Type.GetType("System.String"));
+            emptyMySqlDataTable.Columns.Add("VAT", System.Type.GetType("System.String"));
             emptyMySqlDataTable.Columns.Add("Kontaktperson1", System.Type.GetType("System.String"));
             emptyMySqlDataTable.Columns.Add("TelefonArb1", System.Type.GetType("System.String"));
             emptyMySqlDataTable.Columns.Add("TelefonMobil1", System.Type.GetType("System.String"));
@@ -186,7 +186,7 @@ namespace SGAB.SGAB_Database
 
                     // Börjar på 1 för ID-numret från Access är inte längre ordernumret. Därmed har Access 25 rader och MySql 24 rader (OrderId i MySql hämtas inte). 
                     for (int itemNo = 1; itemNo < row.ItemArray.Length; itemNo++)
-                        dataGridView.Rows[newRowIndex].Cells[itemNo].Value =
+                        dataGridView.Rows[newRowIndex].Cells[itemNo - 1].Value =
                             TranslatorMySqlAndAccess.MySql_To_Access(row.ItemArray[itemNo].ToString());
                 }
             }
@@ -466,5 +466,7 @@ namespace SGAB.SGAB_Database
 
             return true;
         }
+
+		
     }
 }

@@ -542,8 +542,8 @@ namespace SGAB.SGAB_Karta
                 foretag.SynchronizeWithPHP(ForetagFromMySQL, foretagFromAccess);
                 ForetagFromMySQL = foretag.GetAllFromMySql();
 
-                // Synkroniserar startplatser. 
-                startplatser.ForetagFromAccess = foretagFromAccess;
+				// Synkroniserar startplatser. 
+				startplatser.ForetagFromAccess = foretagFromAccess;
                 startplatser.ForetagFromMySql = ForetagFromMySQL;
                 startplatser.SynchronizeWithPHP(StartplatserFromMySQL, startplatserFromAccess);
                 StartplatserFromMySQL = startplatser.GetAllFromMySql();
@@ -553,8 +553,6 @@ namespace SGAB.SGAB_Karta
                 //foretag.CreateDataGridView(ForetagFromMySQL, dgvForetag);
 
                 // Tar fram de startplatser som matchar datorn år. 
-                DataTable tmpForetag = dtforetag.Clone();
-                tmpForetag.Rows.Clear();
                 int year = DateTime.Now.Year - 1;
                 string date = "#10/1/" + year + "#"; // Tar inte nyår som brytdatum utan 1:a oktober gäller. 
                 DataRow[] rowsThisYear = dtforetag.Select("Bestallningsdatum > " + date);
@@ -576,8 +574,14 @@ namespace SGAB.SGAB_Karta
                 FillEntrepreneurComboBoxes(EntreprenorerFromMySQL);
                 FillStatusComboBox();
 
-                // Skickar ett event om att kartan skall uppdateras, samma kontroll med datum görs i startplatslagret. 
-                if (SynchronizationFinished != null)
+				// Om vi har en totalsynk måste vi kopiera över data från MySql. 
+				if (dtforetag.Rows.Count < ForetagFromMySQL.Rows.Count)
+					dtforetag = ForetagFromMySQL;
+				if (dtstartplatser.Rows.Count < StartplatserFromMySQL.Rows.Count)
+					dtstartplatser = StartplatserFromMySQL;
+
+				// Skickar ett event om att kartan skall uppdateras, samma kontroll med datum görs i startplatslagret. 
+				if (SynchronizationFinished != null)
                     SynchronizationFinished(this, new SynchronizationFinishedEventArgs(dtforetag, dtstartplatser));
             };
 
@@ -1331,7 +1335,8 @@ namespace SGAB.SGAB_Karta
 
         private void btnClearTestData_Click(object sender, EventArgs e)
         {
-
+			Foretag testForetag = new Foretag(true);
+			
         }
     }
 }
