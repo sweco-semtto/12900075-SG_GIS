@@ -37,13 +37,13 @@ if($rc == 1)
 }
 else
 {
-	echo "Failure to update row " . "'$OrderID'" . " ID_Access: " . "'$ID_Access'";	
+	echo "Failure to update row " . "'$OrderID'" . " ID_Access: " . "'$ID_Access'" . " Sql: " . $sql;	
 }
 echo "\n";
 echo "</Data>";
 echo "\n";
 echo "</MessageXML>";
 
-$result->free();
-$con->close();
+//$result->free();
+//$con->close();
 ?>

@@ -38,6 +38,6 @@ else
 }
 echo "</Data></MessageXML>";
 
-$result->free();
-$con->close();
+//$result->free();
+//$con->close();
 ?>

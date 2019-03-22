@@ -71,6 +71,6 @@ echo "</Data>";
 echo "\n";
 echo "</MessageXML>";
 
-$result->free();
-$con->close();
+//$result->free();
+//$con->close();
 ?>

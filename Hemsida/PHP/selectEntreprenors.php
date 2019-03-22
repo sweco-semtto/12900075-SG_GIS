@@ -18,7 +18,6 @@ if ($mysqli->connect_errno) {
 // Select
 $sql="SELECT * FROM `SG_Entreprenor`";
 $result = $con->query($sql);
-$row = $result->fetch_array(MYSQLI_ASSOC);
 
 echo "<table>";
 echo "<tr><td>Enreprenör</td><td width='10px'></td><td>Id</td>";
@@ -31,6 +30,6 @@ while($row = $result->fetch_assoc())
 
 echo "</table>";
 
-$result->free();
-$con->close();
+//$result->free();
+//$con->close();
 ?>

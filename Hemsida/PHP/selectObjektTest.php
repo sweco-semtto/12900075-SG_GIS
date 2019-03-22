@@ -18,7 +18,6 @@ if ($mysqli->connect_errno) {
 // Select
 $sql="SELECT * FROM `$tbl_name`";
 $result = $con->query($sql);
-$row = $result->fetch_array(MYSQLI_ASSOC);
 
 // To .NET
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
@@ -54,6 +53,6 @@ while($row = $result->fetch_assoc())
 }
 echo "</MessageXML>";
 
-$result->free();
-$con->close();
+//$result->free();
+//$con->close();
 ?>
