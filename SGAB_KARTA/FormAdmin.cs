@@ -179,7 +179,10 @@ namespace SGAB.SGAB_Karta
             {
                 // Ladda in senaste startplatser ifrån filer. 
             }
-        }
+
+			// Sätter lyssnar till när synkroniseringen är klar
+			SynchronizationFinished += this.FormAdmin_SynchronizationFinished;
+		}
 
         private void FormAdmin_Load(object sender, EventArgs e)
         {
@@ -1336,5 +1339,15 @@ namespace SGAB.SGAB_Karta
 			Foretag testForetag = new Foretag(true);
 			
         }
-    }
+
+		public void FormAdmin_SynchronizationFinished(object sender, SynchronizationFinishedEventArgs e)
+		{
+			List<string> orderIDs = new List<string>();
+			foreach (DataRow row in e.Foretag.Rows)
+				orderIDs.Add(row["OrderID"].ToString());
+
+			foretag.ReFillDataGridView(ForetagFromMySQL, dgvForetag, orderIDs);
+		}
+
+	}
 }
