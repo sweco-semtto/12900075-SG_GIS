@@ -10,8 +10,8 @@ header('Content-type: text/plain');
 
 // Connect to server and select databse.
 $con = mysqli_connect($host, $username, $password, $db_name);
-if ($mysqli->connect_errno) {
-    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+if ($con->connect_errno) {
+    printf("Anslutningsfel: %s\n", $con->connect_error);
     exit();
 }
 
@@ -47,16 +47,16 @@ $sql="INSERT INTO `$tbl_name` VALUES
 '$Ort', '$Region_Forvaltning', '$Distrikt_Omrade', '$VAT', '$Kontaktperson1',
 '$TelefonArb1', '$TelefonMobil1', '$TelefonHem1', '$Epostadress1', '$Kontaktperson2',
 '$TelefonArb2', '$TelefonMobil2', '$TelefonHem2', '$Epostadress2', '$Kommentar',
-'$OrdernrText')";
+'$OrdernrText', '0')";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
 
-// Checks if success
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+echo "\n";
 echo "<MessageXML>";
 echo "\n";
 echo "<Data>";
-if ($affectedRows == 1)
+if ($rc == 1)
 {
 	echo "Success, inserted " . "'$Ordernr'";
 }

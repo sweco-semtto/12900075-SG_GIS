@@ -10,18 +10,18 @@ header('Content-type: text/plain');
 
 // Connect to server and select databse.
 $con = mysqli_connect($host, $username, $password, $db_name);
-if ($mysqli->connect_errno) {
-    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+if ($con->connect_errno) {
+    printf("Anslutningsfel: %s\n", $con->connect_error);
     exit();
 }
 
 // ID and Text sent from form .NET
-$ID                    =$_POST['ID']; 
-$Namn                  =$_POST['Namn']; 
+$ID                   =$_POST['ID']; 
+$Namn                 =$_POST['Namn']; 
 $Fraktentreprenor     =$_POST['Fraktentreprenor'];
 $Spridningsenreprenor =$_POST['Spridningsentreprenor'];
-$Anvandarnamn	     =$_POST['Anvandarnamn'];
-$Losenord			 =$_POST['Losenord'];
+$Anvandarnamn	      =$_POST['Anvandarnamn'];
+$Losenord			  =$_POST['Losenord'];
 
 // Insert Into
 $sql="INSERT INTO `$tbl_name` VALUES ('$ID' , '$Namn', '$Fraktentreprenor' ,'$Spridningsentreprenor', '$Anvandarnamn', '$Losenord', '0' )";

@@ -16,12 +16,12 @@ if ($mysqli->connect_errno) {
 }
 
 // ID and Text sent from form .NET
-$ID                    =$_POST['ID']; 
-$Namn                  =$_POST['Namn']; 
+$ID                   =$_POST['ID']; 
+$Namn                 =$_POST['Namn']; 
 $Fraktentreprenor     =$_POST['Fraktentreprenor'];
 $Spridningsenreprenor =$_POST['Spridningsentreprenor'];
-$Anvandarnamn	     =$_POST['Anvandarnamn'];
-$Losenord			 =$_POST['Losenord'];
+$Anvandarnamn	      =$_POST['Anvandarnamn'];
+$Losenord			  =$_POST['Losenord'];
 
 // Insert Into
 $sql="INSERT INTO `$tbl_name` VALUES ('$ID' , '$Namn', '$Fraktentreprenor' ,'$Spridningsenreprenor', '$Anvandarnamn', '$Losenord' )";

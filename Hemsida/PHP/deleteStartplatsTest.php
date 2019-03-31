@@ -10,34 +10,46 @@ header('Content-type: text/plain');
 
 // Connect to server and select databse.
 $con = mysqli_connect($host, $username, $password, $db_name);
-if ($mysqli->connect_errno) {
-    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+if ($con->connect_errno) {
+    printf("Anslutningsfel: %s\n", $con->connect_error);
     exit();
 }
 
-// OrderID and Text sent from form .NET
-$OrderID=$_POST['OrderID']; 
+// Data sent from form .NET
+$OrderID=$_POST['OrderID'];
 
-// Insert Into
-$sql="UPDATE `$tbl_name` SET Borttagen = 1 WHERE OrderID = '$OrderID'";
-$result = $con->query($sql);
-$rc = $con->affected_rows;
-
-// Checks if success
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 echo "\n";
 echo "<MessageXML>";
 echo "\n";
 echo "<Data>";
 echo "\n";
-if ($rc == 1)	
-{
-	echo "Success, deleted ID " . "'$OrderID'";
+
+// Select
+$sql= "SELECT * FROM `$tbl_name` WHERE Borttagen = 1 and `OrderID` = '$OrderID'";
+$result = $con->query($sql);
+$rc = $con->affected_rows;
+if($rc >= 1)
+{	
+	echo "No changes to row " . "'$OrderID'";
 }
 else
 {
-	echo "Failure, not deleted ID " . "'$OrderID'";
+	//Delete sker genom att flagga som borttagen
+	$sql="UPDATE `$tbl_name` SET Borttagen = 1 WHERE OrderID = '$OrderID'";
+	$result = $con->query($sql);
+	$rc = $con->affected_rows;
+
+	if ($rc >= 1)	
+	{
+		echo "Success, deleted ID " . "'$OrderID'";
+	}
+	else
+	{
+		echo "Failure, not deleted ID " . "'$OrderID'";
+	}
 }
+
 echo "\n";
 echo "</Data>";
 echo "\n";

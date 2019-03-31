@@ -20,23 +20,37 @@ $OrderID=$_POST['OrderID'];
 $ColumnName=$_POST['ColumnName']; 
 $Value=$_POST['Value']; 
 
-// Update
-$sql= "UPDATE `$tbl_name` SET `$ColumnName`= '$Value' WHERE `OrderID` = '$OrderID'";
-$result = $con->query($sql);
-$rc = $con->affected_rows;
-
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 echo "\n";
 echo "<MessageXML>";
 echo "\n";
 echo "<Data>";
+
+// Select
+$sql= "SELECT * FROM `$tbl_name` WHERE `$ColumnName`= '$Value' and `OrderID` = '$OrderID'";
+$result = $con->query($sql);
+$rc = $con->affected_rows;
 if($rc == 1)
 {	
-	echo "Updated row " . "'$OrderID'";	
+	echo "No changes to row " . "'$OrderID'";
 }
 else
 {
-	echo "Failure to update row " . "'$OrderID'" . "    " . "'$sql'";
+	// Update
+	$sql= "UPDATE `$tbl_name` SET `$ColumnName`= '$Value' WHERE `OrderID` = '$OrderID'";
+	$result = $con->query($sql);
+	$rc = $con->affected_rows;
+
+	if($rc == 1)
+	{	
+		echo "Updated row " . "'$OrderID'";	
+	}
+	else
+	{
+		echo "Failure to update row " . "'$OrderID'";
+		echo "\n";
+		echo "'$sql'";
+	}
 }
 echo "\n";
 echo "</Data>";
