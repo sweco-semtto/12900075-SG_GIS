@@ -755,7 +755,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                   "
+                "FrameworkVersion" = "8:2.0.50727                    "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -767,7 +767,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.0.14926, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.1.22869, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_00F21467F6D8159BABE210993E47BCB0"
@@ -838,7 +838,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB.SGAB Database, Version=1.1.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:SGAB.SGAB Database, Version=1.1.1.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_0851CE7956CD67D51A29B5EBE486C8E3"
@@ -2907,15 +2907,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SG_GIS_Databas"
-        "ProductCode" = "8:{ECF9B7A0-280B-416E-ACF4-E627AAE3235D}"
-        "PackageCode" = "8:{FA35AE13-2208-4D94-AF73-FF9339F347E0}"
+        "ProductCode" = "8:{9B9DF08B-02CD-4298-9811-7F68DABF83E7}"
+        "PackageCode" = "8:{0D8E75AB-BBC0-40CD-977E-B082B56AA266}"
         "UpgradeCode" = "8:{7C2E93E2-C4B0-4E9C-9C11-F6C453EE1981}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.1"
+        "ProductVersion" = "8:1.5.2"
         "Manufacturer" = "8:Sweco Position"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

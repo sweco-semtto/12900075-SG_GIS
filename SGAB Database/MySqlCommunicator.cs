@@ -553,11 +553,14 @@ namespace SGAB.SGAB_Database
             StreamPOST.Write(POST, 0, POST.Length);
             StreamPOST.Close();
 
-			//HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-			//Stream Answer = response.GetResponseStream();
-			//StreamReader _Answer = new StreamReader(Answer);
-			//string vystup = _Answer.ReadToEnd();
-			//MessageBox.Show(vystup);
+			//if (postData == "OrderID=334")
+			//{
+			//	HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+			//	Stream Answer = response.GetResponseStream();
+			//	StreamReader _Answer = new StreamReader(Answer);
+			//	string vystup = _Answer.ReadToEnd();
+			//	MessageBox.Show(vystup);
+			//}
 
 			// Får tillbaka ett svar 
 			try

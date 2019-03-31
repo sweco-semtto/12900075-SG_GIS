@@ -393,7 +393,7 @@ namespace SGAB.SGAB_Karta
                 shp.IsSelected = false;
                 shp.Invalidate(true);
             }
-        }
+		}
 
         private void btnUnselect_Click(object sender, EventArgs e)
         {
