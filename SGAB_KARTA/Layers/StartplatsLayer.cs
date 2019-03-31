@@ -158,8 +158,7 @@ namespace SGAB.SGAB_Karta
 
         public TGIS_LayerVector AddStartplatserFromDataTables(DataTable foretagMySqlTable, DataTable startplatsMySqlTable)
         {
-
-            //this.Items.Clear();
+            this.Items.Clear();
             List<string> _orderIDs = new List<string>();
 
             foreach (DataRow startplatsRow in startplatsMySqlTable.Rows)

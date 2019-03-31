@@ -340,11 +340,11 @@ namespace SGAB.SGAB_Karta
                     // Uppdaterar företagslistan
                     foretag.ReFillDataGridView(ForetagFromMySQL, dgvForetag, orderIDs);
                     dgvForetag.SortCompare += foretag.DataGridView_SortCompare_Integers;
-                    if (dgvForetag.Columns.Count > 0)
-                        dgvForetag.Sort(dgvForetag.Columns[foretag.StandardColumnToSortAscending], ListSortDirection.Ascending);
+					if (dgvForetag.Columns.Count > 0)
+						dgvForetag.Sort(dgvForetag.Columns[foretag.StandardColumnToSortAscending], ListSortDirection.Ascending);
 
-                    // Uppdaterar startplatslistan
-                    startplatser.ReFillDataGridView(StartplatserFromMySQL, dgvStartplatser, orderIDs);
+					// Uppdaterar startplatslistan
+					startplatser.ReFillDataGridView(StartplatserFromMySQL, dgvStartplatser, orderIDs);
                     SortStartplatser();
                     ShowVisibleStartplatser();
 
@@ -574,11 +574,9 @@ namespace SGAB.SGAB_Karta
                 FillEntrepreneurComboBoxes(EntreprenorerFromMySQL);
                 FillStatusComboBox();
 
-				// Om vi har en totalsynk måste vi kopiera över data från MySql. 
-				if (dtforetag.Rows.Count < ForetagFromMySQL.Rows.Count)
-					dtforetag = ForetagFromMySQL;
-				if (dtstartplatser.Rows.Count < StartplatserFromMySQL.Rows.Count)
-					dtstartplatser = StartplatserFromMySQL;
+				// Uppdaterar tabellerna som vi skall skicka vidare till färdig-sunk-eventet.  
+				dtforetag = ForetagFromMySQL;
+				dtstartplatser = StartplatserFromMySQL;
 
 				// Skickar ett event om att kartan skall uppdateras, samma kontroll med datum görs i startplatslagret. 
 				if (SynchronizationFinished != null)
