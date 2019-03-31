@@ -180,13 +180,14 @@ namespace SGAB.SGAB_Database
             dataGridView.Rows.Clear();
             foreach (DataRow row in data.Rows)
             {
-                if (OrderIDs.Contains(row["OrderID"].ToString()))
+				// Läger bara till order om det är rätt order-id och raden inte är borttagen. 
+				if (OrderIDs.Contains(row["OrderID"].ToString()) && row["Borttagen"].Equals("0"))
                 {
                     int newRowIndex = dataGridView.Rows.Add();
 
                     // Börjar på 1 för ID-numret från Access är inte längre ordernumret. Därmed har Access 25 rader och MySql 24 rader (OrderId i MySql hämtas inte). 
-                    for (int itemNo = 1; itemNo < row.ItemArray.Length; itemNo++)
-                        dataGridView.Rows[newRowIndex].Cells[itemNo - 1].Value =
+                    for (int itemNo = 1; itemNo < Math.Min(row.ItemArray.Length, dataGridView.Columns.Count); itemNo++)
+                        dataGridView.Rows[newRowIndex].Cells[itemNo].Value =
                             TranslatorMySqlAndAccess.MySql_To_Access(row.ItemArray[itemNo].ToString());
                 }
             }

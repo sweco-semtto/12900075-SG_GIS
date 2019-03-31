@@ -253,7 +253,8 @@ namespace SGAB.SGAB_Database
             dataGridView.Rows.Clear();
             foreach (DataRow row in data.Rows)
             {
-                if (OrderIDs.Contains(row["OrderID"].ToString()))
+				// Läger bara till order om det är rätt order-id och raden inte är borttagen. 
+                if (OrderIDs.Contains(row["OrderID"].ToString()) && row["Borttagen"].Equals("0"))
                 {
                     int newRowIndex = dataGridView.Rows.Add();
                     for (int itemNo = 0; itemNo < Math.Min(row.ItemArray.Length, dataGridView.Columns.Count); itemNo++)
@@ -603,7 +604,8 @@ namespace SGAB.SGAB_Database
                                 columnNameFromPHP.Equals(startplatsIdInPHP) ||
                                 columnNameFromPHP.Equals(IdColumnNameInMySql) ||
                                 columnNameFromPHP.Equals("Status") ||
-                                ColumnsNotFoundInAccess.Contains(columnNameFromPHP))
+								columnNameFromPHP.Equals("Ordernr") ||
+								ColumnsNotFoundInAccess.Contains(columnNameFromPHP))
                                 continue;
 
                             // Kollar efter förändringar
