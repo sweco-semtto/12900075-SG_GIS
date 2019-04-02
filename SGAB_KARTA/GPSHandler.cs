@@ -102,17 +102,9 @@ namespace SGAB.SGAB_Karta
             //skapar ett lager med en punkt som kommer att användas som aktuell GPS-punkt
             try
             {
-
-                //TGIS_ProjectionList prj_list = new TGIS_ProjectionList();
-
-                //Transverse Mercator
-                //_obj_prj = TGIS_Utils.ProjectionList.FindEx("TMR"); 
-
-                ////projektionsfil för RT90, skapad av MASM
-                //_obj_prj.SetUp(0.27587170754584828, 0, 1500064.274, -667.711, 0, 0, 0, 1.00000561024, 0, 0, 0, 0, 0, 0, 0);
                 _srInIni = _configuration.srInIni;
                 _srOutIni = _configuration.srOutIni;
-				_coordTrans = new Tatuk_CoordinateTransform(); //new CoordinateTransform(_srInIni, _srOutIni);
+				_coordTrans = new Tatuk_CoordinateTransform(); 
 
 				//lägger till lagret i kartan
 				_llGps.Name = "GPSlager";
@@ -234,24 +226,9 @@ namespace SGAB.SGAB_Karta
                 {
                     infoText.Text = "";
 
-					//om mottagningen tidigare varit dålig skapas _gpsPoint på nytt här                    
-					//if (_gpsPoint. == null)
-					//{
-					//    _gpsPoint = new TGIS_Point();
-					//}
-
-					// MTTO: 2012-02-17. Kommenterat bort sharp-gps och lagt till tatuk. Tatuk skickar ut
-					// positionen i radianer så jag konverterar tillbaka till grader med * (180 / Math.PI)
-					//läser av koordinater från GPSen
-					//coords.X = _GPS_Sharp.GPRMC.Position.Longitude;
-					//coords.Y = _GPS_Sharp.GPRMC.Position.Latitude;
-					//SGAB_Karta.Point coords = new SGAB_Karta.Point();
 					TGIS_Point coords = new TGIS_Point();
                     coords.X = _tgisGPS.Longitude * (180 / Math.PI); 
                     coords.Y = _tgisGPS.Latitude * (180 / Math.PI);
-
-                    //transformerar koordinater
-                    //coords = _obj_prj.Projected((TGIS_Coordinate)coords);
 
                     coords = _coordTrans.Transform(coords);
 
@@ -281,15 +258,7 @@ namespace SGAB.SGAB_Karta
 
                         //sätter symbol							
                         paramGps.Marker.Size = _configuration.SymbolSizeGps;
-
-                        //Lina kommenterade bort 2010-05-05 efter att vi identifierat att
-                        //denna rad påverkar GPS-pilens angivelse negativt
-                        // Martin kommenterade bort denna rad, 2010-11-09, för att undvika -90 graders 
-                        // felangivelse för riktningsiflen. 
-                        // paramGps.Marker.SymbolRotate = TGIS_Utils.ParamFloat("1", 1);
-
                         paramGps.Marker.Symbol = GetGPSSymbol();
-
                     }
 
                     // Omdatera om gps-punkten inte ligger på punktens centroid. 

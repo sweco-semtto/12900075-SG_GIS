@@ -108,20 +108,20 @@ namespace SGAB.SGAB_Karta
 		/// <summary>
 		/// Definitionen för WGS 84. 
 		/// </summary>
-		protected TGIS_CSCoordinateSystem cs_in_wgs84;
+		protected TGIS_CSCoordinateSystem cs_in_WGS84;
 
 		/// <summary>
 		/// Definitionen för RT 90 2,5 gon V. 
 		/// </summary>
-		protected TGIS_CSCoordinateSystem cs_out_RT90;
+		protected TGIS_CSCoordinateSystem cs_out_SWEREF99TM;
 
 		/// <summary>
 		/// Skapar en ny koordinattransformation. 
 		/// </summary>
 		public Tatuk_CoordinateTransform()
 		{
-			cs_in_wgs84 = TGIS_CSFactory.ByEPSG(4326);
-			cs_out_RT90 = TGIS_CSFactory.ByEPSG(3021);
+			cs_in_WGS84 = TGIS_CSFactory.ByEPSG(4326);
+			cs_out_SWEREF99TM = TGIS_CSFactory.ByEPSG(3006);
 		}
 
 		/// <summary>
@@ -131,7 +131,7 @@ namespace SGAB.SGAB_Karta
 		/// <returns></returns>
 		public TGIS_Point Transform(TGIS_Point coordinate)
 		{
-			return cs_out_RT90.FromCS(cs_in_wgs84, coordinate);
+			return cs_out_SWEREF99TM.FromCS(cs_in_WGS84, coordinate);
 		}
 	}
 

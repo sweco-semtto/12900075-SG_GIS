@@ -23,7 +23,7 @@ namespace SGAB.SGAB_Karta
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "txt files (*.txt)|*.txt";
-            dialog.InitialDirectory = @"C:\Temp\Loggfiler Anders Svensson\Stillastående lastbil";
+            dialog.InitialDirectory = @"C:\SWECO\Projekt\Skogens Gödsling\Loggar\GPS-loggar";
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
