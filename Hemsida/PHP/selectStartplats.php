@@ -71,7 +71,7 @@ while($row = $result->fetch_assoc())
 	echo "\n";
 	echo "<Bestallningsdatum>" . $row["Bestallningsdatum"] . "</Bestallningsdatum>";
 	echo "\n";
-	echo "<Borttagen>" . "0" . "</Borttagen>";
+	echo "<Borttagen>" . $row["Borttagen"] . "</Borttagen>";
 	echo "\n";
 	echo "</Startplats>";
 	echo "\n";

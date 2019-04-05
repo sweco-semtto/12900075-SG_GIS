@@ -30,7 +30,7 @@ echo "<Data>";
 $sql= "SELECT * FROM `$tbl_name` WHERE `$ColumnName`= '$Value' and `OrderID` = '$OrderID'";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
-if($rc == 1)
+if($rc >= 1)
 {	
 	echo "No changes to row " . "'$OrderID'";
 }
@@ -41,7 +41,7 @@ else
 	$result = $con->query($sql);
 	$rc = $con->affected_rows;
 
-	if($rc == 1)
+	if($rc >= 1)
 	{	
 		echo "Updated row " . "'$OrderID'";	
 	}

@@ -84,7 +84,7 @@ while($row = $result->fetch_assoc())
 	echo "\n";
 	echo "<OrdernrText>" . $row["OrdernrText"] . "</OrdernrText>";	
 	echo "\n";
-	echo "<Borttagen>" . "0" . "</Borttagen>";
+	echo "<Borttagen>" . $row["Borttagen"] . "</Borttagen>";
 	echo "\n";
 	echo "</Foretag>";
 	echo "\n";
