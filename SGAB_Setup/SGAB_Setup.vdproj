@@ -400,13 +400,13 @@
         "Entry"
         {
         "MsmKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
-        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
-        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
+        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -640,25 +640,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0851CE7956CD67D51A29B5EBE486C8E3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_382DC00A8992CBDC20D107101C78F574"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B5C594EA1D55A015FE5C0517FB35A6FC"
+        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -670,7 +652,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "OwnerKey" = "8:_B5C594EA1D55A015FE5C0517FB35A6FC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_382DC00A8992CBDC20D107101C78F574"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_0851CE7956CD67D51A29B5EBE486C8E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -755,7 +755,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                     "
+                "FrameworkVersion" = "8:2.0.50727                      "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -767,9 +767,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.1.22869, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.1.29255, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_00F21467F6D8159BABE210993E47BCB0"
+                    {
+                    "Name" = "8:SGAB_Karta.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SGAB_Karta.dll"
             "TargetName" = "8:"
@@ -833,9 +838,14 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB.SGAB Database, Version=1.1.1.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:SGAB.SGAB Database, Version=1.1.2.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_0851CE7956CD67D51A29B5EBE486C8E3"
+                    {
+                    "Name" = "8:SGAB.SGAB Database.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SGAB.SGAB Database.dll"
             "TargetName" = "8:"
@@ -1262,6 +1272,11 @@
             "AssemblyAsmDisplayName" = "8:ProjNET, Version=1.0.2794.16965, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_382DC00A8992CBDC20D107101C78F574"
+                    {
+                    "Name" = "8:ProjNET.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ProjNET.dll"
             "TargetName" = "8:"
@@ -2048,6 +2063,11 @@
             "AssemblyAsmDisplayName" = "8:SGAB_InternetConnection, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_B4BB9E62F03B5B66F09B22C1EE71082E"
+                    {
+                    "Name" = "8:SGAB_InternetConnection.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:SGAB_InternetConnection.dll"
             "TargetName" = "8:"
@@ -2074,6 +2094,11 @@
             "AssemblyAsmDisplayName" = "8:TatukGIS_DK10_NET, Version=10.51.16.15975, Culture=neutral, PublicKeyToken=a37f93a92f4d9f32, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_B5C594EA1D55A015FE5C0517FB35A6FC"
+                    {
+                    "Name" = "8:TatukGIS_DK10_NET.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:TatukGIS_DK10_NET.dll"
             "TargetName" = "8:"
@@ -2882,19 +2907,19 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SG_GIS_Databas"
-        "ProductCode" = "8:{9B9DF08B-02CD-4298-9811-7F68DABF83E7}"
-        "PackageCode" = "8:{0D8E75AB-BBC0-40CD-977E-B082B56AA266}"
+        "ProductCode" = "8:{FDDE7F27-9923-43A7-BE91-263FF8235425}"
+        "PackageCode" = "8:{827A4ED7-15D0-4667-ADB0-5E80442FD81C}"
         "UpgradeCode" = "8:{7C2E93E2-C4B0-4E9C-9C11-F6C453EE1981}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.2"
+        "ProductVersion" = "8:1.5.3"
         "Manufacturer" = "8:Sweco Position"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SG_GIS_Databas 1.5.2"
+        "Title" = "8:SG_GIS_Databas 1.5.3"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Sweco Position"
         "Keywords" = "8:"
@@ -3432,7 +3457,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_104DEB84BB55433BA897B1B5EA147386"
             {
-            "SourcePath" = "8:..\\SGAB\\obj\\x86\\Debug\\SGAB.exe"
+            "SourcePath" = "8:..\\SGAB\\obj\\x86\\Release\\SGAB.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"

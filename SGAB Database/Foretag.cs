@@ -331,8 +331,26 @@ namespace SGAB.SGAB_Database
                                 continue;
 
                             // Kollar om kolumnnamnet finns med i både MySql och Access, t.ex. kolumnen Borttagen finns bara i MySql
-                            if (dataFromMySql.Columns.IndexOf(columnNameFromPHP) == -1 || dataFromAccess.Columns.IndexOf(columnNameInAccess) == -1)
-                                continue;
+                            if (dataFromAccess.Columns.IndexOf(columnNameInAccess) == -1 && 
+								MySqlRow[columnNameFromPHP].ToString().Equals("1"))
+							{
+								List<KeyValuePair<string, string>> rowToUpdateInMySql = new List<KeyValuePair<string, string>>();
+
+								// Lägger till id
+								rowToUpdateInMySql.Add(
+									new KeyValuePair<string, string>(IdColumnNameInMySql, MySqlRow[IdColumnNameInMySql].ToString()));
+
+								// Lägger till kolumnamn
+								rowToUpdateInMySql.Add(
+									new KeyValuePair<string, string>("ColumnName", columnNameFromPHP));
+
+								// Lägger till värdet
+								rowToUpdateInMySql.Add(
+									new KeyValuePair<string, string>("Value", "0"));
+
+								valuesToUpdateStringsInMySql.Add(rowToUpdateInMySql);
+								continue;
+							}
 
                             // Om värdena för en kolumn inte är samma skall den uppdateras. 
                             // Måste kolla om bara ett mellanslag kommer ifrån Access för då tar MySql bort det. 
