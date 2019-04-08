@@ -1348,6 +1348,5 @@ namespace SGAB.SGAB_Karta
 
 			foretag.ReFillDataGridView(ForetagFromMySQL, dgvForetag, orderIDs);
 		}
-
 	}
 }

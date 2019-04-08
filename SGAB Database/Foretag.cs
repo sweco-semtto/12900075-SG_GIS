@@ -354,7 +354,8 @@ namespace SGAB.SGAB_Database
 
                             // Om värdena för en kolumn inte är samma skall den uppdateras. 
                             // Måste kolla om bara ett mellanslag kommer ifrån Access för då tar MySql bort det. 
-                            if (!TranslatorMySqlAndAccess.MySql_To_Access(MySqlRow[columnNameFromPHP].ToString()).
+                            if (!ColumnsNotFoundInAccess.Contains(columnNameFromPHP) &&
+								!TranslatorMySqlAndAccess.MySql_To_Access(MySqlRow[columnNameFromPHP].ToString()).
                                 Equals(rowFromAccess[columnNameInAccess].ToString()) &&
                                 !rowFromAccess[columnNameInAccess].ToString().Trim().Equals("")) 
                             {

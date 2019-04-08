@@ -596,13 +596,18 @@ namespace SGAB.SGAB_Database
                     // Hämtar orderid från MySql.
                     string startplatsIDFromMySql = MySqlRow["ID"].ToString();
                     string orderIDFromAccess = startplatsRow[IdColumnNameInAccess].ToString();
-                    string ordernrFromAccess = startplatsRow[OrdernrColumnInAccess].ToString();
+					string ordernrFromMySql = MySqlRow["OrderNr"].ToString();
+					string ordernrFromAccess = startplatsRow[OrdernrColumnInAccess].ToString();
                     int orderYearFromAccess = GetYearFromOrdernr(ordernrFromAccess);
                     string orderIdInMySql = MySqlRow["OrderID"].ToString();
                     string AccessIdInMySql = MySqlRow[startplatsIdInPHP].ToString();
 
                     if (orderIdInMySql.Equals(string.Empty))
                         continue; // Felhantering om att Företag måste synkroniseras först, alt. att företag synkas först innan denna synk. körs. 
+
+					int a = 0;
+					if (orderIdInMySql == "813")
+						a = 1;
 
                     // Jämför startplatser ifrån Access med MySql. 
                     int orderYearFromMySql = GetOrderYearFromMySql(ForetagFromMySql, orderIdInMySql);
@@ -662,7 +667,8 @@ namespace SGAB.SGAB_Database
                                 valueAccess = value.ToString(base.DecimalSepatorForMySql);
                             }
 
-                            if (!TranslatorMySqlAndAccess.Access_To_MySql(valueAccess).Equals(valuePHP))
+                            if (!TranslatorMySqlAndAccess.Access_To_MySql(valueAccess).Equals(valuePHP) &&
+								MySqlRow[OrdernrColumnInMySql].ToString().Equals(ordernrFromAccess))
                             {
                                 List<KeyValuePair<string, string>> rowToUpdateInMySql = new List<KeyValuePair<string, string>>();
 
