@@ -16,7 +16,6 @@ if ($con->connect_errno) {
 }
 
 // ID and Text sent from form .NET
-$ID               = $_POST['ID'];
 $ID_Access		  = $_POST['ID_Access'];
 $OrderID          = $_POST['OrderID']; 
 $Startplats       = $_POST['Startplats']; 
@@ -28,7 +27,12 @@ $Ingaende_Objekt  = $_POST['Ingaende_Objekt'];
 $Status           = $_POST['Status'];
 
 // Insert Into
-$sql="INSERT INTO `$tbl_name` VALUES ('$ID', '$ID_Access', '$OrderID' , '$Startplats', '$Nordligkoordinat' ,'$Ostligkoordinat' ,'$Areal_ha' , '$Skog_CAN_ton' ,'$Ingaende_Objekt', '', '', '', '', '$Status', '0', '0', '0')";
+$sql="INSERT INTO `$tbl_name` (ID_Access, OrderID, Startplats, Nordligkoordinat_startplats, Ostligkoordinat_startplats, 
+Areal_ha_startplats, Skog_CAN_ton_startplats, Ingaende_Objekt, Kommentar1, Kommentar2, Kommentar3, Kommentar4, 
+Status, Fraktentreprenors_ID, Spridningsentreprenors_ID, Borttagen) VALUES 
+('$ID_Access', '$OrderID' , '$Startplats', '$Nordligkoordinat' ,'$Ostligkoordinat', 
+'$Areal_ha' , '$Skog_CAN_ton' ,'$Ingaende_Objekt', '', '', '', '', 
+'$Status', '0', '0', '0')";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
 

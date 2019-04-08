@@ -41,13 +41,16 @@ $Kommentar=$_POST['Kommentar'];
 $OrdernrText=$_POST['OrdernrText'];
 
 // Insert Into
-$sql="INSERT INTO `$tbl_name` VALUES 
-('$OrderID', '$Ordernr', '$Bestallningsreferens', '$Bestallningsdatum',
-'$Tidsstampel', '$Foretagsnamn', '$Faktureringsadress', '$Postnummer',
-'$Ort', '$Region_Forvaltning', '$Distrikt_Omrade', '$VAT', '$Kontaktperson1',
-'$TelefonArb1', '$TelefonMobil1', '$TelefonHem1', '$Epostadress1', '$Kontaktperson2',
-'$TelefonArb2', '$TelefonMobil2', '$TelefonHem2', '$Epostadress2', '$Kommentar',
-'$OrdernrText', '0')";
+$sql="INSERT INTO `$tbl_name` (Ordernr, Bestallningsreferens, Bestallningsdatum, Tidsstampel, 
+Foretagsnamn, Faktureringsadress, Postnummer, Ort, Region_Forvaltning, 
+Distrikt_Omrade, VAT, Kontaktperson1, TelefonArb1, TelefonMobil1, TelefonHem1, 
+Epostadress1, Kontaktperson2, TelefonArb2, TelefonMobil2, TelefonHem2, 
+Epostadress2, Kommentar, OrdernrText, Borttagen) VALUES 
+('$Ordernr', '$Bestallningsreferens', '$Bestallningsdatum', '$Tidsstampel', 
+'$Foretagsnamn', '$Faktureringsadress', '$Postnummer', '$Ort', '$Region_Forvaltning', 
+'$Distrikt_Omrade', '$VAT', '$Kontaktperson1', '$TelefonArb1', '$TelefonMobil1', '$TelefonHem1', 
+'$Epostadress1', '$Kontaktperson2', '$TelefonArb2', '$TelefonMobil2', '$TelefonHem2', 
+'$Epostadress2', '$Kommentar', '$OrdernrText', '0')";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
 
