@@ -142,7 +142,7 @@ namespace SGAB.SGAB_Karta
             startplatsPoint.SetField("Mi_prinx", 
                 TranslatorMySqlAndAccess.MySql_To_Access(rowStartplats["ID"].ToString()));
 
-            if (rowStartplats["ID"].ToString().Equals("") || rowForetag["Ordernr"].ToString().Equals("") ||
+			if (rowStartplats["ID"].ToString().Equals("") || rowForetag["Ordernr"].ToString().Equals("") ||
                 rowStartplats["ID_Access"].ToString().Equals(""))
             {
             }

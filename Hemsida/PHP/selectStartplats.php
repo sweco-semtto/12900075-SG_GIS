@@ -10,8 +10,8 @@ header('Content-type: text/plain');
 
 // Connect to server and select databse.
 $con = mysqli_connect($host, $username, $password, $db_name);
-if ($mysqli->connect_errno) {
-    printf("Anslutningsfel: %s\n", $mysqli->connect_error);
+if ($con->connect_errno) {
+    printf("Anslutningsfel: %s\n", $con->connect_error);
     exit();
 }
 
@@ -22,7 +22,7 @@ $date = $date -1;
 $dateLimit = $date . "0901";
 
 // Select
-$sql="SELECT * FROM `$tbl_name` join SG_Foretag on SG_Startplats.OrderID = SG_Foretag.OrderID where SG_Foretag.Bestallningsdatum > " . $dateLimit;
+$sql="SELECT * FROM `$tbl_name` join SG_Foretag on SG_Startplats.OrderID = SG_Foretag.OrderID where SG_Startplats.Borttagen = 0 and SG_Foretag.Bestallningsdatum > " . $dateLimit;
 $result = $con->query($sql);
 
 // To .NET

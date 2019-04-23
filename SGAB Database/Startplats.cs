@@ -301,6 +301,10 @@ namespace SGAB.SGAB_Database
                 if (orderIdInMySql.Equals(string.Empty))
                     continue; // Felhantering om att Företag måste synkroniseras först, alt. att företag synkas först innan denna synk. körs. 
 
+				int a = 0;
+				if (orderIdInMySql == "798")
+					a = 1;
+
                 // Jämför startplatser ifrån Access med MySql.
                 int orderYearFromMySql = GetOrderYearFromMySql(ForetagFromMySql, orderIdInMySql);
                 bool startplatsDoesNotExixtsInMySql = !StartplatsExistsInMySQL(dataFromMySql, orderIdInMySql, NameStartplats);
@@ -605,10 +609,6 @@ namespace SGAB.SGAB_Database
                     if (orderIdInMySql.Equals(string.Empty))
                         continue; // Felhantering om att Företag måste synkroniseras först, alt. att företag synkas först innan denna synk. körs. 
 
-					int a = 0;
-					if (orderIdInMySql == "813")
-						a = 1;
-
                     // Jämför startplatser ifrån Access med MySql. 
                     int orderYearFromMySql = GetOrderYearFromMySql(ForetagFromMySql, orderIdInMySql);
                     if (orderYearFromAccess == orderYearFromMySql && 
@@ -758,13 +758,44 @@ namespace SGAB.SGAB_Database
         /// <returns></returns>
         protected bool StartplatsExistsInMySQL(DataTable dataFromMySql, string orderid, string nameStartplats)
         {
-            foreach (DataRow startplatsRow in dataFromMySql.Rows)
+			// Justerar startplatsnamnet, för i databasen finns det inte å, ä och ö
+			string nameStartplatsKorr = KorrigeraTecken(nameStartplats);
+
+			foreach (DataRow startplatsRow in dataFromMySql.Rows)
                 if (orderid.Equals(startplatsRow[IdColumnNameInMySql].ToString()) &&
-                    nameStartplats.Equals(startplatsRow[startplatsNameInPHP].ToString()))
+					nameStartplatsKorr.Equals(startplatsRow[startplatsNameInPHP].ToString()))
                     return true;
 
             return false;
         }
+
+		/// <summary>
+		/// Korrigerar tecken som xml och ansii har problem med, som t.ex. å, ä och ö.
+		/// </summary>
+		/// <param name="teckensträngSomSkallJusteras"></param>
+		/// <returns></returns>
+		protected string KorrigeraTecken(string teckensträngSomSkallJusteras)
+		{
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("å", "%aring");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("Å", "%Aring");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("ä", "%auml");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("Ä", "%Auml");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("ö", "%ouml");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("Ö", "%Ouml");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("ü", "%uuml");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("Ü", "%Uuml");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("û", "%ucirc");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("Û", "%Ucirc");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("é", "%egrave");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("É", "%Egrave");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("&", "%amp");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("<", "%lt");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace(">", "%gt");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("\"", " %quot");
+			teckensträngSomSkallJusteras = teckensträngSomSkallJusteras.Replace("'", "%#39");
+
+			return teckensträngSomSkallJusteras;
+		}
 
         /// <summary>
         /// Tar bort rader i MySql. 
