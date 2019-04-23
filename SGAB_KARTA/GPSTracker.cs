@@ -364,6 +364,14 @@ namespace SGAB.GPSTracking
             if (!TrackGPS)
                 return;
 
+			// Kan komma en felaktig signal fårn GPS:en eller TatukGIS, vi hoppar över den och sparar felet. 
+			if (InterpretedDataFromGps == null)
+			{
+				Error = true;
+				ErrorComputer = true;
+				return;
+			}
+
             TextInTextFile.Append(InterpretedDataFromGps.Name);
             TextInTextFile.Append(newLineInTextFile);
             TextInTextFile.Append("Inläst = ");
