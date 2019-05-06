@@ -371,7 +371,9 @@ namespace SGAB.SGAB_Karta
             foreach (TGIS_Shape selectedStartplats in selectedStartplatser)
             {
                 TGIS_Shape shp = selectedStartplats.MakeEditable();
-                shp.SetField(ConfigurationManager.AppSettings["NamnStatusKolumn"].ToString(), e.Status);
+                if (!ConfigurationManager.AppSettings["NamnStatusKolumn"].ToString().Equals("Status") &&
+                    e.Status != -1)
+                    shp.SetField(ConfigurationManager.AppSettings["NamnStatusKolumn"].ToString(), e.Status);
 
                 shp.IsSelected = false;
                 shp.Invalidate(true);
