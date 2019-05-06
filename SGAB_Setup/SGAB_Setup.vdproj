@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
+        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_05C9EA4281974B6189AEE7CABCA98424"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,8 +33,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_0739C7A1D0CC61D5312AB0E130682914"
+        "MsmKey" = "8:_0851CE7956CD67D51A29B5EBE486C8E3"
         "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0851CE7956CD67D51A29B5EBE486C8E3"
+        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -159,6 +171,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_382DC00A8992CBDC20D107101C78F574"
+        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_382DC00A8992CBDC20D107101C78F574"
+        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4001A1C3AC9F4EBFA3C3FDBB6D97BCF4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -273,32 +297,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_8790A30542B0525F28A2A8BD048ADE92"
-        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8790A30542B0525F28A2A8BD048ADE92"
-        "OwnerKey" = "8:_0739C7A1D0CC61D5312AB0E130682914"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_89B545D39C19488CABB947BB322D1CF2"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8AD78ABC1494184B5590CF454F2A9405"
-        "OwnerKey" = "8:_0739C7A1D0CC61D5312AB0E130682914"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8AD78ABC1494184B5590CF454F2A9405"
-        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -393,6 +393,36 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
+        "OwnerKey" = "8:_0851CE7956CD67D51A29B5EBE486C8E3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
+        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
+        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5C594EA1D55A015FE5C0517FB35A6FC"
+        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B5C594EA1D55A015FE5C0517FB35A6FC"
+        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_B7CA0E898278463284CAA546186D88C0"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -460,7 +490,7 @@
         "Entry"
         {
         "MsmKey" = "8:_C2C319C40ABA856E97058516F3F334AA"
-        "OwnerKey" = "8:_8AD78ABC1494184B5590CF454F2A9405"
+        "OwnerKey" = "8:_B5C594EA1D55A015FE5C0517FB35A6FC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -479,24 +509,6 @@
         {
         "MsmKey" = "8:_D25D49B4469F4D0DB973BAA6F3C0094C"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D3A61C8D13783110CB1868C9DAB04D68"
-        "OwnerKey" = "8:_F4AD8B7264A5C72A9B2643A8ECE9E3B8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D3A61C8D13783110CB1868C9DAB04D68"
-        "OwnerKey" = "8:_0739C7A1D0CC61D5312AB0E130682914"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D3A61C8D13783110CB1868C9DAB04D68"
-        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -591,18 +603,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F4AD8B7264A5C72A9B2643A8ECE9E3B8"
-        "OwnerKey" = "8:_104DEB84BB55433BA897B1B5EA147386"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F4AD8B7264A5C72A9B2643A8ECE9E3B8"
-        "OwnerKey" = "8:_0739C7A1D0CC61D5312AB0E130682914"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_F5D96F2C08324C67A1EB1793DEC7833A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -646,31 +646,31 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0739C7A1D0CC61D5312AB0E130682914"
+        "OwnerKey" = "8:_00F21467F6D8159BABE210993E47BCB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8AD78ABC1494184B5590CF454F2A9405"
+        "OwnerKey" = "8:_B5C594EA1D55A015FE5C0517FB35A6FC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8790A30542B0525F28A2A8BD048ADE92"
+        "OwnerKey" = "8:_382DC00A8992CBDC20D107101C78F574"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F4AD8B7264A5C72A9B2643A8ECE9E3B8"
+        "OwnerKey" = "8:_0851CE7956CD67D51A29B5EBE486C8E3"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D3A61C8D13783110CB1868C9DAB04D68"
+        "OwnerKey" = "8:_B4BB9E62F03B5B66F09B22C1EE71082E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -755,7 +755,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                         "
+                "FrameworkVersion" = "8:2.0.50727                           "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -763,6 +763,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_00F21467F6D8159BABE210993E47BCB0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.3.42452, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_00F21467F6D8159BABE210993E47BCB0"
+                    {
+                    "Name" = "8:SGAB_Karta.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SGAB_Karta.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05C9EA4281974B6189AEE7CABCA98424"
             {
             "SourcePath" = "8:..\\Bilder\\Stift0_S.gif"
@@ -803,20 +834,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0739C7A1D0CC61D5312AB0E130682914"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0851CE7956CD67D51A29B5EBE486C8E3"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.1.18955, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:SGAB.SGAB Database, Version=1.1.5.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_0739C7A1D0CC61D5312AB0E130682914"
+                    "_0851CE7956CD67D51A29B5EBE486C8E3"
                     {
-                    "Name" = "8:SGAB_Karta.dll"
+                    "Name" = "8:SGAB.SGAB Database.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:SGAB_Karta.dll"
+            "SourcePath" = "8:SGAB.SGAB Database.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
@@ -1232,6 +1263,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_382DC00A8992CBDC20D107101C78F574"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ProjNET, Version=1.0.2794.16965, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_382DC00A8992CBDC20D107101C78F574"
+                    {
+                    "Name" = "8:ProjNET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ProjNET.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3C69365C4516451BA6825B1B6A9F70AD"
@@ -1674,37 +1736,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8790A30542B0525F28A2A8BD048ADE92"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ProjNET, Version=1.0.2794.16965, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_8790A30542B0525F28A2A8BD048ADE92"
-                    {
-                    "Name" = "8:ProjNET.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ProjNET.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89B545D39C19488CABB947BB322D1CF2"
             {
             "SourcePath" = "8:..\\Bilder\\StoraEnso2.png"
@@ -1723,37 +1754,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8AD78ABC1494184B5590CF454F2A9405"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TatukGIS_DK10_NET, Version=10.51.16.15975, Culture=neutral, PublicKeyToken=a37f93a92f4d9f32, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_8AD78ABC1494184B5590CF454F2A9405"
-                    {
-                    "Name" = "8:TatukGIS_DK10_NET.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:TatukGIS_DK10_NET.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F7B3D0FCBC54255AD20C10C30649A2B"
@@ -2054,6 +2054,68 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B4BB9E62F03B5B66F09B22C1EE71082E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:SGAB_InternetConnection, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_B4BB9E62F03B5B66F09B22C1EE71082E"
+                    {
+                    "Name" = "8:SGAB_InternetConnection.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:SGAB_InternetConnection.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B5C594EA1D55A015FE5C0517FB35A6FC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:TatukGIS_DK10_NET, Version=10.51.16.15975, Culture=neutral, PublicKeyToken=a37f93a92f4d9f32, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_B5C594EA1D55A015FE5C0517FB35A6FC"
+                    {
+                    "Name" = "8:TatukGIS_DK10_NET.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:TatukGIS_DK10_NET.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B7CA0E898278463284CAA546186D88C0"
@@ -2367,37 +2429,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D3A61C8D13783110CB1868C9DAB04D68"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB_InternetConnection, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_D3A61C8D13783110CB1868C9DAB04D68"
-                    {
-                    "Name" = "8:SGAB_InternetConnection.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:SGAB_InternetConnection.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D43FA63410B846DF8CCE2589C2190934"
             {
             "SourcePath" = "8:..\\Bilder\\SCA0.png"
@@ -2698,37 +2729,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F4AD8B7264A5C72A9B2643A8ECE9E3B8"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB.SGAB Database, Version=1.1.5.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_F4AD8B7264A5C72A9B2643A8ECE9E3B8"
-                    {
-                    "Name" = "8:SGAB.SGAB Database.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:SGAB.SGAB Database.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F5D96F2C08324C67A1EB1793DEC7833A"
             {
             "SourcePath" = "8:..\\Bilder\\PilO.png"
@@ -2907,19 +2907,19 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SG_GIS_Databas"
-        "ProductCode" = "8:{C59A41F1-5223-4CE4-AA2B-E8C70E4950AE}"
-        "PackageCode" = "8:{4F8E26CA-BBD6-40DB-BB72-92022B794EE1}"
+        "ProductCode" = "8:{6303BF5C-BE69-4330-B53D-20514D37D730}"
+        "PackageCode" = "8:{30DC3084-6BAA-414D-855B-754265E76AB4}"
         "UpgradeCode" = "8:{7C2E93E2-C4B0-4E9C-9C11-F6C453EE1981}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.6"
+        "ProductVersion" = "8:1.5.8"
         "Manufacturer" = "8:Sweco Position"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SG_GIS_Databas 1.5.6"
+        "Title" = "8:SG_GIS_Databas 1.5.8"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Sweco Position"
         "Keywords" = "8:"
@@ -3457,7 +3457,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_104DEB84BB55433BA897B1B5EA147386"
             {
-            "SourcePath" = "8:..\\SGAB\\obj\\x86\\Release\\SGAB.exe"
+            "SourcePath" = "8:..\\SGAB\\obj\\x86\\Debug\\SGAB.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"

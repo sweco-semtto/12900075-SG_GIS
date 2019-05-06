@@ -942,7 +942,7 @@ namespace SGAB.SGAB_Karta
                 {
                     row.Cells["Fraktentreprenors_ID"].Value = freightEntrepreneur.Id;
                     row.Cells["Spridningsentreprenors_ID"].Value = spreadEntrepreneur.Id;
-                    row.Cells["Status"].Value = StatusKodLista.FindById(statusNr) == null ? String.Empty : status.Id;
+                    row.Cells["Status"].Value = StatusKodLista.FindById(statusNr) == null ? row.Cells["Status"].Value : status.Id;
                 }
             }
             catch (MySqlException mysqlex)
