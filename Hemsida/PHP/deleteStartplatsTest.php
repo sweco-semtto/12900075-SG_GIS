@@ -16,7 +16,7 @@ if ($con->connect_errno) {
 }
 
 // Data sent from form .NET
-$OrderID=$_POST['OrderID'];
+$ID=$_POST['ID'];
 
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 echo "\n";
@@ -26,27 +26,27 @@ echo "<Data>";
 echo "\n";
 
 // Select
-$sql= "SELECT * FROM `$tbl_name` WHERE Borttagen = 1 and `OrderID` = '$OrderID'";
+$sql= "SELECT * FROM `$tbl_name` WHERE Borttagen = 1 and `ID` = '$ID'";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
 if($rc >= 1)
 {	
-	echo "No changes to row " . "'$OrderID'";
+	echo "No changes to row " . "'$ID'";
 }
 else
 {
 	//Delete sker genom att flagga som borttagen
-	$sql="UPDATE `$tbl_name` SET Borttagen = 1 WHERE OrderID = '$OrderID'";
+	$sql="UPDATE `$tbl_name` SET Borttagen = 1 WHERE `ID` = '$ID'";
 	$result = $con->query($sql);
 	$rc = $con->affected_rows;
 
 	if ($rc >= 1)	
 	{
-		echo "Success, deleted ID " . "'$OrderID'";
+		echo "Success, deleted ID " . "'$ID'";
 	}
 	else
 	{
-		echo "Failure, not deleted ID " . "'$OrderID'";
+		echo "Failure, not deleted ID " . "'$ID'";
 	}
 }
 

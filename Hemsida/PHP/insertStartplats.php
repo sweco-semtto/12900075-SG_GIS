@@ -18,7 +18,7 @@ if ($con->connect_errno) {
 // ID and Text sent from form .NET
 $ID_Access		  = $_POST['ID_Access'];
 $OrderID          = $_POST['OrderID']; 
-$Startplats       = $_POST['Startplats']; 
+$Startplats       = $_POST['Startplats_startplats']; 
 $Nordligkoordinat = $_POST['Nordligkoordinat_startplats'];
 $Ostligkoordinat  = $_POST['Ostligkoordinat_startplats'];
 $Areal_ha         = $_POST['Areal_ha_startplats'];

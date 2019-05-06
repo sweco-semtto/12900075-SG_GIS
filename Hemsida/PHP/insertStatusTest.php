@@ -23,7 +23,7 @@ $AndradAv       = $_POST['AndradAv'];
 $Status_status  = $_POST['Status_status'];
 
 // Insert Into
-$sql="INSERT INTO `$tbl_name` VALUES ('$ID', '$StartplatsID', '$Datum' , '$AndradAv', '$Status_status', '0')";
+$sql="INSERT INTO `$tbl_name` (`StartplatsID`, `Datum`, `AndradAv`, `Status_status`) VALUES ('$StartplatsID', '$Datum' , '$AndradAv', '$Status_status')";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
 

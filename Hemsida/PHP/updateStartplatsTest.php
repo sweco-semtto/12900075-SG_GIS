@@ -16,6 +16,7 @@ if ($con->connect_errno) {
 }
 
 // ID and Text sent from form .NET
+$ID = $_POST['ID']; 
 $OrderID=$_POST['OrderID']; 
 $ColumnName=$_POST['ColumnName']; 
 $Value=$_POST['Value']; 
@@ -27,7 +28,7 @@ echo "\n";
 echo "<Data>";
 
 // Select
-$sql= "SELECT * FROM `$tbl_name` WHERE `$ColumnName`= '$Value' and `OrderID` = '$OrderID'";
+$sql= "SELECT * FROM `$tbl_name` WHERE `$ColumnName`= '$Value' and `ID` = '$ID'";
 $result = $con->query($sql);
 $rc = $con->affected_rows;
 if($rc >= 1)
@@ -37,7 +38,7 @@ if($rc >= 1)
 else
 {
 	// Update
-	$sql= "UPDATE `$tbl_name` SET `$ColumnName`= '$Value' WHERE `OrderID` = '$OrderID'";
+	$sql= "UPDATE `$tbl_name` SET `$ColumnName`= '$Value' WHERE `ID` = '$ID'";
 	$result = $con->query($sql);
 	$rc = $con->affected_rows;
 

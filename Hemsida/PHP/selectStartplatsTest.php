@@ -22,7 +22,7 @@ $date = $date -1;
 $dateLimit = $date . "0901";
 
 // Select
-$sql="SELECT * FROM `$tbl_name` join SG_Foretag on SG_Startplats.OrderID = SG_Foretag.OrderID where SG_Startplats.Borttagen = 0 and SG_Foretag.Bestallningsdatum > " . $dateLimit;
+$sql="SELECT * FROM `$tbl_name` join SG_Test_Foretag on SG_Test_Startplats.OrderID = SG_Test_Foretag.OrderID where SG_Test_Startplats.Borttagen = 0 and SG_Test_Foretag.Bestallningsdatum > " . $dateLimit;
 $result = $con->query($sql);
 
 // To .NET
