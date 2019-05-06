@@ -82,6 +82,11 @@ namespace SGAB.SGAB_Database
                 this.ColumnNameInMySql = ColumnNameInMySql;
                 this.ColumnNameInAccess = ColumnNameInAccess;
             }
+
+            public override string ToString()
+            {
+                return ColumnNameInMySql + "   |   " + ColumnNameInAccess;
+            }
         }
     }
 }

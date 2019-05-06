@@ -570,7 +570,8 @@ namespace SGAB.SGAB_Karta
 
         protected void Karta_StatusStartplatsChangedFromMap(object sender, StatusStartplatsChangedFromMapEventArgs e)
         {
-            this._kartverktyg.Startplatser.UpdateStartplatsStatusFromMap(e.OrderId, e.IdAccess, e.StartplatsStatus, e.StartplatsId, this.EntrepreneurId.ToString(), e.Note, e.FieldStatus);
+            Configuration configuration = Configuration.GetConfiguration();
+            this._kartverktyg.Startplatser.UpdateStartplatsStatusFromMap(e.OrderId, e.IdAccess, e.StartplatsStatus, e.StartplatsId, this.EntrepreneurId.ToString(), e.Note, e.FieldStatus, configuration.IsInTestMode);
         }
 
         private void tgisKarta_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)

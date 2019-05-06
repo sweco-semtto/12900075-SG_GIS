@@ -93,6 +93,15 @@ namespace SGAB.SGAB_Database
         }
 
         /// <summary>
+        /// Id-kolumnens namn i MySql. 
+        /// </summary>
+        protected string OrderIdColumnNameInMySql
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Lista med nycklar. Alla värden i denna lista är av typen int och sorteras efter det i DataGridViewn. Använd denna 
         /// variable endast om du har flera nycklar. 
         /// </summary>

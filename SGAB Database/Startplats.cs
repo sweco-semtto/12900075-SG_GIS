@@ -95,6 +95,19 @@ namespace SGAB.SGAB_Database
             set;
         }
 
+
+        protected TranslateColumnNames SyncColumnNames
+        {
+            get;
+            set;
+        }
+
+        protected TranslateColumnNames SyncColumnNamesAccessToPHP
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Anger i vilken mapp offlineuppdateringarna ligger. 
         /// </summary>
@@ -142,7 +155,10 @@ namespace SGAB.SGAB_Database
             XMLNameForDataTable = "Startplats";
 
             // Anger vad Id-taggen heter i PHP. 
-            IdColumnNameInMySql = "OrderID";
+            IdColumnNameInMySql = "ID";
+
+            // Ander var ID-taggen för en order heter. 
+            OrderIdColumnNameInMySql = "OrderID";
 
             // Anger vad Id-taggen heter i Access
             IdColumnNameInAccess = "ID";
@@ -170,6 +186,13 @@ namespace SGAB.SGAB_Database
             // Anger en översättning av kolumnamn ifrån PHP till MySql. 
             TranslatePHPIntoMySql = new TranslateColumnNames();
             TranslatePHPIntoMySql.AddTranslation("Startplats_startplats", "Startplats");
+
+            SyncColumnNames = new TranslateColumnNames();
+            SyncColumnNames.AddTranslation("Ingaende_Objekt", "Ingående_Objekt");
+
+            SyncColumnNamesAccessToPHP = new TranslateColumnNames();
+            SyncColumnNamesAccessToPHP.AddTranslation("ID_Access", "ID");
+            SyncColumnNamesAccessToPHP.AddTranslation("Startplats_startplats", "Startplats");
 
             // Anger en översättning av kolumnnamn från PHP till gridviewrubriker
             TranslatePHPIntoGridHeader = new TranslateColumnNames();
@@ -301,10 +324,6 @@ namespace SGAB.SGAB_Database
                 if (orderIdInMySql.Equals(string.Empty))
                     continue; // Felhantering om att Företag måste synkroniseras först, alt. att företag synkas först innan denna synk. körs. 
 
-				int a = 0;
-				if (orderIdInMySql == "798")
-					a = 1;
-
                 // Jämför startplatser ifrån Access med MySql.
                 int orderYearFromMySql = GetOrderYearFromMySql(ForetagFromMySql, orderIdInMySql);
                 bool startplatsDoesNotExixtsInMySql = !StartplatsExistsInMySQL(dataFromMySql, orderIdInMySql, NameStartplats);
@@ -315,15 +334,17 @@ namespace SGAB.SGAB_Database
                     // Lägger inte till värdet för ID eftesom det ändå skall automatgenereras i MySql-databasen. 
                     foreach (string columnName in ColumnNamesFromPHP)
                     {
-                        string columnNameInMySql = TranslationColumnNamesFromMySql.TranslateAToB(columnName);
-                        string columnNameInAccess = TranslatePHPIntoMySql.TranslateAToB(columnNameInMySql);
+                        string columnNameInMySql = SyncColumnNames.TranslateAToB(columnName);
+                        string columnNameInAccess = SyncColumnNamesAccessToPHP.TranslateAToB(columnNameInMySql);
 
                         // startplatsRow[TranslationColumnNamesFromMySql.TranslateAToB(TranslatePHPIntoMySql.TranslateAToB(columnName))]
                         
                         // Eftersom vi behöver översätta både ifrån PHP pch ifrån MySql till Access krävs två översättningar. 
                         if (!ColumnsNotFoundInAccess.Contains(columnName) &&
                             columnNameInMySql != IdColumnNameInMySql &&
-                            startplatsRow[columnNameInAccess] != null)
+                            (dataFromAccess.Columns.Contains(columnNameInAccess) && 
+                             startplatsRow[columnNameInAccess] != null) &&
+                            !RowFromAccessAlreadyExistsInMySql(startplatsRow, dataFromMySql))
                         {
                             if (startplatsRow[columnNameInAccess].GetType().FullName.Equals("System.Double"))
                             {
@@ -334,7 +355,7 @@ namespace SGAB.SGAB_Database
                             }
                             else
                                 rowToInsert.Add(new KeyValuePair<string, string>(
-                                    TranslatePHPIntoMySql.TranslateAToB(columnName),
+                                    SyncColumnNamesAccessToPHP.TranslateBToA(columnName),
                                     TranslatorMySqlAndAccess.Access_To_MySql(startplatsRow[columnNameInAccess].ToString())));
                         }
                         else if (!ColumnsNotFoundInAccess.Contains(columnName) && columnName.Equals(IdColumnNameInMySql))
@@ -351,11 +372,54 @@ namespace SGAB.SGAB_Database
                             blankCounter++;
 
                     if (blankCounter < rowToInsert.Count)
+                    {
+                        rowToInsert.Add(new KeyValuePair<string, string>("OrderID", orderIdInMySql));
                         valuesToInsert.Add(rowToInsert);
+                    }
                 }
             }
             
             SendRequest(valuesToInsert, Url_To_Script_Insert);
+        }
+
+
+        protected bool RowFromAccessAlreadyExistsInMySql(DataRow rowFromAccess, DataTable dataFromMySql)
+        {
+            bool ID_AccessExists = false;
+            foreach (DataRow rowFromMySql in dataFromMySql.Rows)
+            {
+                if (rowFromAccess["ID"].ToString() == rowFromMySql["ID_Access"].ToString())
+                {
+                    ID_AccessExists = true;
+                    break;
+                }
+            }
+
+            bool OrderIDExists = false;
+            foreach (DataRow rowFromMySql in dataFromMySql.Rows)
+            {
+                if (rowFromAccess["Ordernr"].ToString() == rowFromMySql["Ordernr"].ToString())
+                {
+                    OrderIDExists = true;
+                    break;
+                }
+            }
+
+            bool StartplatsExists = false;
+            foreach (DataRow rowFromMySql in dataFromMySql.Rows)
+            {
+                if (rowFromAccess["Startplats"].ToString() ==
+                    TranslatorMySqlAndAccess.MySql_To_Access(rowFromMySql["Startplats_startplats"].ToString()))
+                {
+                    StartplatsExists = true;
+                    break;
+                }
+            }
+
+            if (ID_AccessExists && OrderIDExists && StartplatsExists)
+                return true;
+
+            return false;
         }
 
         /// <summary>  
@@ -387,7 +451,7 @@ namespace SGAB.SGAB_Database
                             // Skall ej kolla kolumnerna ID, OrderID och ID_Access i MySQL 
                             if (columnName.Equals(IdColumnNameInMySql) ||
                                 columnName.Equals(startplatsIdInPHP) ||
-                                columnName.Equals("ID"))
+                                columnName.Equals("OrderID"))
                                 continue;
 
                             // Kollar efter förändringar
@@ -430,7 +494,7 @@ namespace SGAB.SGAB_Database
         /// <param name="OrderId"></param>
         /// <param name="AccessId"></param>
         /// <param name="Status"></param>
-        public void UpdateStartplatsStatusFromMap(string OrderId, string AccessId, int Status, string startplatsId, string user, string note, int fieldStatus)
+        public void UpdateStartplatsStatusFromMap(string OrderId, string AccessId, int Status, string startplatsId, string user, string note, int fieldStatus, bool testmode)
         {
             List<List<KeyValuePair<string, string>>> valuesToUpdate = new List<List<KeyValuePair<string, string>>>();
 
@@ -439,7 +503,7 @@ namespace SGAB.SGAB_Database
 
             // Lägger till OrderId
             rowToUpdate.Add(
-                new KeyValuePair<string, string>(IdColumnNameInMySql, OrderId));
+                new KeyValuePair<string, string>(IdColumnNameInMySql, startplatsId));
 
             // Lägger till ID_Access 
             rowToUpdate.Add(
@@ -461,7 +525,7 @@ namespace SGAB.SGAB_Database
 
             // Lägger till OrderId
             rowToUpdate.Add(
-                new KeyValuePair<string, string>(IdColumnNameInMySql, OrderId));
+                new KeyValuePair<string, string>(IdColumnNameInMySql, startplatsId));
 
             // Lägger till ID_Access 
             rowToUpdate.Add(
@@ -507,7 +571,7 @@ namespace SGAB.SGAB_Database
                 string userName = Entreprenorer.IdSkogensGödsling;
                 if (user != null)
                     userName = user;
-                Stati stati = new Stati();
+                Stati stati = new Stati(testmode);
                 stati.InsertRow(startplatsId, DateTime.Now.ToString(), userName, Status.ToString());
             }
         }
@@ -657,6 +721,7 @@ namespace SGAB.SGAB_Database
 							}
 
                             // Kollar efter förändringar
+                            columnNameInAccess = columnNameInAccess == OrderIdColumnNameInMySql ? IdColumnNameInMySql : columnNameInAccess;
                             string valueAccess = startplatsRow[columnNameInAccess].ToString();
                             string valuePHP = MySqlRow[columnNameFromPHP].ToString();
 
@@ -726,7 +791,7 @@ namespace SGAB.SGAB_Database
                 int yearMySql = Convert.ToDateTime(rowMySqlForetag[ColumnNameDateInMySql].ToString()).Year;
 
                 if (rowMySqlForetag[OrdernrColumnInAccess].Equals(ordernr) && orderYear == yearMySql)
-                    return rowMySqlForetag[IdColumnNameInMySql].ToString();
+                    return rowMySqlForetag[OrderIdColumnNameInMySql].ToString();
             }
 
             return String.Empty;
@@ -743,7 +808,7 @@ namespace SGAB.SGAB_Database
             int yearMySql = -1;
 
             foreach (DataRow MySqlRow in dataForetragFromMySql.Rows)
-                if (orderid.Equals(MySqlRow[IdColumnNameInMySql].ToString()))
+                if (orderid.Equals(MySqlRow[OrderIdColumnNameInMySql].ToString()))
                     return Convert.ToDateTime(MySqlRow[ColumnNameDateInMySql].ToString()).Year;
 
             return yearMySql;
