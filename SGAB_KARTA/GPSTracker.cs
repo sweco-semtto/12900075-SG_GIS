@@ -364,24 +364,37 @@ namespace SGAB.GPSTracking
             if (!TrackGPS)
                 return;
 
-			// Kan komma en felaktig signal fårn GPS:en eller TatukGIS, vi hoppar över den och sparar felet. 
-			if (InterpretedDataFromGps == null)
-			{
-				Error = true;
-				ErrorComputer = true;
-				return;
-			}
-
+            // Kan komma en felaktig signal fårn GPS:en eller TatukGIS, vi hoppar över den och sparar felet. 
+            if (InterpretedDataFromGps == null)
+            {
+                Error = true;
+                ErrorComputer = true;
+                return;
+            }
+            
             TextInTextFile.Append(InterpretedDataFromGps.Name);
             TextInTextFile.Append(newLineInTextFile);
             TextInTextFile.Append("Inläst = ");
             TextInTextFile.Append(InterpretedDataFromGps.Parsed);
             TextInTextFile.Append(newLineInTextFile);
 
+            if (InterpretedDataFromGps.Items == null)
+            {
+                TextInTextFile.Append("GPS-fel!");
+                TextInTextFile.Append(newLineInTextFile);
+                TextInTextFile.Append("InterpretedDataFromGps.Items = null");
+                TextInTextFile.Append(newLineInTextFile);
+                TextInTextFile.Append(newLineInTextFile);
+
+                Error = true;
+                ErrorComputer = true;
+                return;
+            }
+
             for (int i = 0; i < InterpretedDataFromGps.Items.Count; i++)
             {
                 TextInTextFile.Append(InterpretedDataFromGps.Items[i].ToString());
-                if (i < InterpretedDataFromGps.Items.Count -1)
+                if (i < InterpretedDataFromGps.Items.Count - 1)
                     TextInTextFile.Append(",");
             }
 

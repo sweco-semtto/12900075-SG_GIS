@@ -873,16 +873,24 @@ namespace SGAB.SGAB_Database
             List<List<KeyValuePair<string, string>>> valuesToDelete = new List<List<KeyValuePair<string, string>>>();
 
             // Tar fram alla idnummer ifrån Access
-            List<string> IdsAccess = new List<string>();
+            List<Tuple<string, string, string>> IdsAccess = new List<Tuple<string, string, string>>();
             foreach (DataRow rowFromAccess in dataFromAccess.Rows)
-                IdsAccess.Add(rowFromAccess[IdColumnNameInAccess].ToString());
+                IdsAccess.Add(new Tuple<string, string, string>(
+                    rowFromAccess[IdColumnNameInAccess].ToString(),
+                    rowFromAccess[OrdernrColumnInAccess].ToString(),
+                    rowFromAccess[startplatsNameInMyAccess].ToString()));
 
             int year = DateTime.Now.Year - 1;
             string date = "#10/1/" + year + "#"; // Tar inte nyår som brytdatum utan 1:a oktober gäller. 
             foreach (DataRow rowFromMySql in dataFromMySql.Rows)
             {
+                Tuple<string, string, string> tmpTuple = new Tuple<string, string, string>(
+                    rowFromMySql["ID_Access"].ToString(),
+                    rowFromMySql["Ordernr"].ToString(),
+                    TranslatorMySqlAndAccess.MySql_To_Access(rowFromMySql["Startplats_startplats"].ToString()));
+
                 if (DateTime.Parse(rowFromMySql[ColumnNameDateInMySql].ToString()) > DateTime.Parse(date) &&
-                    !IdsAccess.Contains(rowFromMySql[startplatsIdInPHP].ToString()))
+                    !IdsAccess.Contains(tmpTuple))
                 {
                     // Tar bort startplatsen, är en lista i en lista för att matcha metoden SendRequest
                     List<KeyValuePair<string, string>> rowToDelete = new List<KeyValuePair<string, string>>();
