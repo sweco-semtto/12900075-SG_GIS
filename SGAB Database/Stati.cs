@@ -33,7 +33,7 @@ namespace SGAB.SGAB_Database
             TranslatePHPIntoGridHeader.AddTranslation("Status_status", "Status");
         }
 
-        public Stati(bool testmode)
+        public Stati(bool testmode) : this()
         {
             new Stati();
 
