@@ -181,7 +181,8 @@ namespace SGAB.SGAB_Karta
             }
 
 			// Sätter lyssnar till när synkroniseringen är klar
-			SynchronizationFinished += this.FormAdmin_SynchronizationFinished;
+            if (LoggedInAsAdmin)
+			    SynchronizationFinished += this.FormAdmin_SynchronizationFinished;
 		}
 
         private void FormAdmin_Load(object sender, EventArgs e)
