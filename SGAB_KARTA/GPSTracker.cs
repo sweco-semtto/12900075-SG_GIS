@@ -350,6 +350,13 @@ namespace SGAB.GPSTracking
             if (!TrackGPS)
                 return;
 
+            if (RawdataFromGps == null)
+            {
+                Error = true;
+                ErrorComputer = true;
+                return;
+            }
+
             TextInTextFile.Append(RawdataFromGps.NmeaMessage);
             TextInTextFile.Append(newLineInTextFile);
         }
