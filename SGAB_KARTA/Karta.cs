@@ -168,7 +168,7 @@ namespace SGAB.SGAB_Karta
                 tgisScale.BorderStyle = BorderStyle.None;
 
                 _gpsHandler = new GPSHandler(tgisKarta, _gps);
-                _gpsHandler.GpsTracker = this.GpsTracker;
+                this.GpsTracker = _gpsHandler.GpsTracker;
 				_gpsHandler.GpsTracker.MapOrGPSError += new SGAB.GPSTracking.UserRegisterMapOrGPSErrorHandler(GpsTracker_MapOrGPSError);
 
 				_ErrorTimer = new Timer();

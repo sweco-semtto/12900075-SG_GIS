@@ -89,8 +89,9 @@ namespace SGAB.SGAB_Karta
         //public GPSHandler(TGIS_ViewerWnd GIS, TGIS_GpsNmea GPS, SharpGis.SharpGps.GPSHandler GPS_Sharp)
         public GPSHandler(TGIS_ViewerWnd GIS, TGIS_GpsNmea GPS)
         {
-            _tgisKarta = GIS;
-            _tgisGPS = GPS;
+            this._tgisKarta = GIS;
+            this._tgisGPS = GPS;
+            this._GpsTracker = new GPSTracking.GPSTracker();
 
 			// Hämtar hur stor avvikelse i meter som gäller när pilen skall ändras i kartan. 
 			GPSDeviationInMetersMin = Configuration.GetConfiguration().GPSDeviationInMetersMin;
