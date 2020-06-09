@@ -102,6 +102,7 @@
     <Compile Include="Interfaces\IAccessCommunicator.cs" />
     <Compile Include="Interfaces\IDataGridViewColumnsSort.cs" />
     <Compile Include="Interfaces\IXmlChecker.cs" />
+    <Compile Include="SilentErrorMessageEventArgs.cs" />
     <Compile Include="Startplats.cs" />
     <Compile Include="Interfaces\IMySqlCommunicator.cs" />
     <Compile Include="MySqlCommunicator.cs" />

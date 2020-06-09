@@ -130,8 +130,10 @@ namespace SGAB
             _karta.SeletedStartplatser += _formAdmin.Karta_SeletedStartplatser;
             _karta.ShowFormAdmin += new ShowFormAdminEventHandler(karta_ShowFormAdmin);
             _karta.SynchronizeTimer.Timer.Tick += _formAdmin.Karta_SynchronizeTimer_Tick;
-        }
 
+            // Genomför en synkronisering vid uppstart. 
+            _formAdmin.SynchronizeWithPHP();
+        }
 
         private int ReadEntreprenuersId()
         {

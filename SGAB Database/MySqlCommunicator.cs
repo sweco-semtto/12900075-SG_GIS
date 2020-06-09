@@ -9,8 +9,12 @@ using System.Windows.Forms;
 
 namespace SGAB.SGAB_Database
 {
+    public delegate void SilentErrorMessageEventHandler(object sender, SilentErrorMessageEventArgs e);
+
     public abstract class MySqlCommunicator : IMySqlCommunicator
     {
+        public event SilentErrorMessageEventHandler SilentErrorMessage;
+
         /// <summary>
         /// Skriptet som tar bort rader ifrån MySql. 
         /// </summary>
@@ -190,6 +194,14 @@ namespace SGAB.SGAB_Database
             }
             catch (System.Net.WebException wex)
             {
+                if (SilentErrorMessage != null)
+                {
+                    SilentErrorMessage(this, new SilentErrorMessageEventArgs(
+                        "Hittar ej PHP-skriptet " + MessageErrorScriptName + " på serven", 
+                        wex));
+                    return null;
+                }
+                    
                 MessageBox.Show("Hittar ej PHP-skriptet " + MessageErrorScriptName + " på serven. Vänligen kontrollera internetanslutning och försök igen, annars kontakta Skogens Gödsling och uppge följande fel: \n" + wex.ToString(),
                     "PHP-skript saknas. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -198,6 +210,14 @@ namespace SGAB.SGAB_Database
             }
             catch (System.Xml.XmlException xmlex)
             {
+                if (SilentErrorMessage != null)
+                {
+                    SilentErrorMessage(this, new SilentErrorMessageEventArgs(
+                        "XML-fel inträffar när PHP-skriptet " + MessageErrorScriptName + " körs",
+                        xmlex));
+                    return null;
+                }
+
                 MessageBox.Show("Problem med att läsa ifrån MySql. \n\n" + xmlex.ToString());
                 MessageBox.Show("Problem med att läsa ifrån MySql. \n\n" + xmlex.Message);
                 MessageBox.Show("Problem med att läsa ifrån MySql. \n\n" + xmlex.InnerException.ToString());
@@ -205,6 +225,14 @@ namespace SGAB.SGAB_Database
             }
             catch (Exception ex)
             {
+                if (SilentErrorMessage != null)
+                {
+                    SilentErrorMessage(this, new SilentErrorMessageEventArgs(
+                        "Övrigt fel inträffade för när PHP-skriptet " + MessageErrorScriptName + " körs",
+                        ex));
+                    return null;
+                }
+
                 MessageBox.Show("Problem med att läsa ifrån MySql:\n\n" + ex.ToString());
             }
 

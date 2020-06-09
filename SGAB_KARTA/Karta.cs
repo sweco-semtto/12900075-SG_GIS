@@ -151,6 +151,12 @@ namespace SGAB.SGAB_Karta
             SynchronizeTimer = new SynchronizeTimer(Configuration.SynchronizationTime, this.LoggedInAsAdmin);
         }
 
+        public void VisaFelmeddelande(string meddelande, Exception exception = null)
+        {
+            infoText.Text = meddelande;
+            infoText.Visible = true;
+        }
+
         private void Karta_Load(object sender, EventArgs e)
         {
             try
@@ -198,7 +204,6 @@ namespace SGAB.SGAB_Karta
                     lyr.SetCSByEPSG(3006);
                     lyr.IncrementalPaint = true;
                 }
-
 
                 // Startar en synkroniseringstimer
                 SynchronizeTimer.Start();
@@ -382,6 +387,9 @@ namespace SGAB.SGAB_Karta
 
         public void FormAdmin_SynchronizationFinished(object sender, SynchronizationFinishedEventArgs e)
         {
+            if (this.startplatsLayer == null)
+                return;
+
             _kartverktyg.ReFillStartplatser((this.startplatsLayer as StartplatsLayer), e.Foretag, e.Startplatser);
 
             // Ritar om alla symboler

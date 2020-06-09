@@ -753,6 +753,25 @@ namespace SGAB.SGAB_Karta
             }
         }
 
+        public bool SilentErrorMessages
+        {
+            get
+            {
+                string silentErrorMessagesString = GetValue("SilentErrorMessages");
+
+                bool silentErrorMessages = true;
+                try
+                {
+                    bool.TryParse(silentErrorMessagesString, out silentErrorMessages);
+                }
+                catch (Exception)
+                {
+                }
+
+                return silentErrorMessages;
+            }
+        }
+
         /// <summary>
         /// Hämtar eller sätter användarnamnet. 
         /// </summary>

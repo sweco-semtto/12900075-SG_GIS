@@ -755,7 +755,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:2.0.50727                                "
+                "FrameworkVersion" = "8:2.0.50727                                 "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -767,7 +767,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.6.23761, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:SGAB_Karta, Version=3.1.7.28965, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_00F21467F6D8159BABE210993E47BCB0"
@@ -2907,19 +2907,19 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SG_GIS_Databas"
-        "ProductCode" = "8:{6EA00DAD-FBFE-4F1D-AD61-65DA157BA94F}"
-        "PackageCode" = "8:{DCD71379-5C4C-494B-99D3-1903DBA2F3B8}"
+        "ProductCode" = "8:{DF6E0E9C-4A71-4371-B153-3B8A76D9A34E}"
+        "PackageCode" = "8:{3C1D99D8-C869-41B6-9F18-0161DD258C7E}"
         "UpgradeCode" = "8:{7C2E93E2-C4B0-4E9C-9C11-F6C453EE1981}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.13"
+        "ProductVersion" = "8:1.5.14"
         "Manufacturer" = "8:Sweco Position"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SG_GIS_Databas 1.5.13"
+        "Title" = "8:SG_GIS_Databas 1.5.14"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Sweco Position"
         "Keywords" = "8:"
@@ -3457,7 +3457,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_104DEB84BB55433BA897B1B5EA147386"
             {
-            "SourcePath" = "8:..\\SGAB\\obj\\x86\\Debug\\SGAB.exe"
+            "SourcePath" = "8:..\\SGAB\\obj\\x86\\Release\\SGAB.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A5A73A6EC4FD4730B9BD49E72F8060FD"

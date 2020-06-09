@@ -233,6 +233,12 @@ namespace SGAB.SGAB_Karta
                 Startplatser = new Startplats(true);
             }
 
+            if (Configuration.GetConfiguration().SilentErrorMessages)
+            {
+                foretag.SilentErrorMessage += Database_SilentErrorMessage;
+                Startplatser.SilentErrorMessage += Database_SilentErrorMessage;
+            }
+
             if (SGAB_InternetConnection.InternetConnection.HasInternetConnection)
             {
                 // Hämtar data ifrån MySql. 
@@ -240,7 +246,7 @@ namespace SGAB.SGAB_Karta
                 DataTable startplatsMySqlTable = Startplatser.GetAllFromMySql();
 
                 // Kontrollerar så att vi inte har fått t.ex. ett proxyfel, d.v.s. ingen datatabell är null. 
-                if (foretagMySqlTable != null && startplatsMySqlTable != null)
+                if (foretagMySqlTable != null && startplatsMySqlTable != null )
                     return ReFillStartplatser(startplatsLayer, foretagMySqlTable, startplatsMySqlTable);
             }
             
@@ -265,9 +271,22 @@ namespace SGAB.SGAB_Karta
             //return null;
         }
 
+        private void Database_SilentErrorMessage(object sender, SilentErrorMessageEventArgs e)
+        {
+            this._karta.VisaFelmeddelande(e.ErrorMessage, e.Exception);
+
+            if (Configuration.GetConfiguration().LogExceptions)
+            {
+                Log.LogMessage("Database exception + " + e.Exception.Message, Configuration.GetConfiguration().LogFilePath);
+            }
+        }
+
         public TGIS_LayerVector ReFillStartplatser(StartplatsLayer startplatsLayer, DataTable foretagMySqlTable, 
             DataTable startplatsMySqlTable)
         {
+            if (startplatsLayer == null)
+                return null;
+
             if (!_karta.LoggedInAsAdmin)
             {
                 // Skapar alla symbolerna för startplatserna, men endast de som är kopplade till entreprenören. 

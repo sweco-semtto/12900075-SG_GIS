@@ -316,7 +316,7 @@ namespace SGAB.SGAB_Karta
             }
 
             // Sparar kopian i en textfil. 
-            if (SGAB_InternetConnection.InternetConnection.HasInternetConnection)
+            if (SGAB_InternetConnection.InternetConnection.HasInternetConnection && myStartplatser.Rows.Count > 0)
             {
                 myStartplatser.WriteXml(LoggFolder + "Startplatser.xml", XmlWriteMode.WriteSchema);
                 myForetag.WriteXml(LoggFolder + "Foretag.xml", XmlWriteMode.WriteSchema);
