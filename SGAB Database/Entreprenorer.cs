@@ -57,10 +57,10 @@ namespace SGAB.SGAB_Database
 
             
             // Anger vilka skript som gäller
-            Url_To_Script_Delete = "http://www.sg-systemet.com/bestallning/PHP/deleteEntreprenor.php";
-            Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/insertEntreprenor.php";
-            Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/selectEntreprenor.php";
-            Url_To_Script_Update = "http://www.sg-systemet.com/bestallning/PHP/updateEntreprenor.php";
+            Url_To_Script_Delete = "https://www.sg-systemet.com/bestallning/PHP/deleteEntreprenor.php";
+            Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/insertEntreprenor.php";
+            Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/selectEntreprenor.php";
+            Url_To_Script_Update = "https://www.sg-systemet.com/bestallning/PHP/updateEntreprenor.php";
 
             // Anger skriptnamn som skall synas i ett, ev. felmeddelande om det inte går att hämta startplatser. 
             MessageErrorScriptName = "SelectEntreprenor.php";

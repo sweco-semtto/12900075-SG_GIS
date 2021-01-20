@@ -14,10 +14,13 @@ namespace SGAB
         /// </summary>
         public const int NOT_LOGGED_IN = -1;
 
-        protected static string LogInUrl = "http://www.sg-systemet.com/bestallning/PHP/checkLogin.php";
+        protected static string LogInUrl = "https://www.sg-systemet.com/bestallning/PHP/checkLogin.php";
 
         public static int TryToLoginAsEntrepreneur(string username, string password)
         {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             string postData = "username=" + username + "&password=" + password;
             ASCIIEncoding encoding = new ASCIIEncoding();
             byte[] POST = encoding.GetBytes(postData);
@@ -32,24 +35,24 @@ namespace SGAB
             StreamPOST.Write(POST, 0, POST.Length);
             StreamPOST.Close();
 
-			//HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-			//Stream Answer = response.GetResponseStream();
-			//StreamReader _Answer = new StreamReader(Answer);
-			//string vystup = _Answer.ReadToEnd();
-			//return 0;
+            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            //Stream Answer = response.GetResponseStream();
+            //StreamReader _Answer = new StreamReader(Answer);
+            //string vystup = _Answer.ReadToEnd();
+            //return 0;
 
-			// Får tillbaka ett svar 
-			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-			StreamReader streamResponse = new StreamReader(response.GetResponseStream());
-			DataSet dsTest = new DataSet();
-			dsTest.ReadXml(streamResponse);
-			DataTable dt = dsTest.Tables["Data"];
+            // Får tillbaka ett svar 
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            StreamReader streamResponse = new StreamReader(response.GetResponseStream());
+            DataSet dsTest = new DataSet();
+            dsTest.ReadXml(streamResponse);
+            DataTable dt = dsTest.Tables["Data"];
 
-			if (dt == null)
-				return NOT_LOGGED_IN;
+            if (dt == null)
+                return NOT_LOGGED_IN;
 
-			return int.Parse(dt.Rows[0]["ID"].ToString());
-		}
+            return int.Parse(dt.Rows[0]["ID"].ToString());
+        }
 
         /// <summary>
         /// Logga in om inte administratörs dll:en hittas. 

@@ -20,7 +20,7 @@ namespace SGAB
 
         public DllLoader()
         {
-            this.PathToAdminDll = Application.StartupPath + "\\_Admin.dll";
+            this.PathToAdminDll = Application.StartupPath + "\\Admin.dll";
         }
 
         /// <summary>

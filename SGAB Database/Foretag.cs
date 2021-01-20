@@ -63,10 +63,10 @@ namespace SGAB.SGAB_Database
             XMLNameForDataTable = "Foretag";          
 
             // Anger vilka skript som gäller
-            Url_To_Script_Delete = "http://www.sg-systemet.com/bestallning/PHP/DeleteForetag.php";
-            Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/InsertForetag.php";
-            Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/SelectForetag.php";
-            Url_To_Script_Update = "http://www.sg-systemet.com/bestallning/PHP/UpdateForetag.php";
+            Url_To_Script_Delete = "https://www.sg-systemet.com/bestallning/PHP/DeleteForetag.php";
+            Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/InsertForetag.php";
+            Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/SelectForetag.php";
+            Url_To_Script_Update = "https://www.sg-systemet.com/bestallning/PHP/UpdateForetag.php";
 
             // Anger skriptnamn som skall synas i ett, ev. felmeddelande om det inte går att hämta företag. 
             MessageErrorScriptName = "SelectForetag.php";
@@ -95,10 +95,10 @@ namespace SGAB.SGAB_Database
             if (testmode)
             {
                 // Anger vilka skript som gäller
-                Url_To_Script_Delete = "http://www.sg-systemet.com/bestallning/PHP/DeleteForetagTest.php";
-                Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/InsertForetagTest.php";
-                Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/SelectForetagTest.php";
-                Url_To_Script_Update = "http://www.sg-systemet.com/bestallning/PHP/UpdateForetagTest.php";
+                Url_To_Script_Delete = "https://www.sg-systemet.com/bestallning/PHP/DeleteForetagTest.php";
+                Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/InsertForetagTest.php";
+                Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/SelectForetagTest.php";
+                Url_To_Script_Update = "https://www.sg-systemet.com/bestallning/PHP/UpdateForetagTest.php";
             }
         }
 

@@ -170,10 +170,10 @@ namespace SGAB.SGAB_Database
 			OrdernrColumnInMySql = "Ordernr";
 
 			// Anger vilka skript som gäller
-			Url_To_Script_Delete = "http://www.sg-systemet.com/bestallning/PHP/deleteStartplats.php";
-            Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/insertStartplats.php";
-            Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/selectStartplats.php";
-            Url_To_Script_Update = "http://www.sg-systemet.com/bestallning/PHP/updateStartplats.php";
+			Url_To_Script_Delete = "https://www.sg-systemet.com/bestallning/PHP/deleteStartplats.php";
+            Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/insertStartplats.php";
+            Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/selectStartplats.php";
+            Url_To_Script_Update = "https://www.sg-systemet.com/bestallning/PHP/updateStartplats.php";
 
             // Anger skriptnamn som skall synas i ett, ev. felmeddelande om det inte går att hämta startplatser. 
             MessageErrorScriptName = "SelectStartplats.php";
@@ -211,10 +211,10 @@ namespace SGAB.SGAB_Database
             if (testmode)
             {
                 // Anger vilka skript som gäller
-                Url_To_Script_Delete = "http://www.sg-systemet.com/bestallning/PHP/deleteStartplatsTest.php";
-                Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/insertStartplatsTest.php";
-                Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/selectStartplatsTest.php";
-                Url_To_Script_Update = "http://www.sg-systemet.com/bestallning/PHP/updateStartplatsTest.php";
+                Url_To_Script_Delete = "https://www.sg-systemet.com/bestallning/PHP/deleteStartplatsTest.php";
+                Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/insertStartplatsTest.php";
+                Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/selectStartplatsTest.php";
+                Url_To_Script_Update = "https://www.sg-systemet.com/bestallning/PHP/updateStartplatsTest.php";
             }
         }
 

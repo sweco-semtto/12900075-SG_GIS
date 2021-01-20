@@ -24,8 +24,8 @@ namespace SGAB.SGAB_Database
             IdColumnNameInMySql = "ID";
 
             // Anger vilka skript som gäller
-            Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/selectStatus.php";
-            Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/insertStatus.php";
+            Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/selectStatus.php";
+            Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/insertStatus.php";
 
             // Anger en översättning av kolumnnamn från PHP till gridviewrubriker
             TranslatePHPIntoGridHeader = new TranslateColumnNames();
@@ -40,8 +40,8 @@ namespace SGAB.SGAB_Database
             if (testmode)
             {
                 // Anger vilka skript som gäller
-                Url_To_Script_Select = "http://www.sg-systemet.com/bestallning/PHP/selectStatusTest.php";
-                Url_To_Script_Insert = "http://www.sg-systemet.com/bestallning/PHP/insertStatusTest.php";
+                Url_To_Script_Select = "https://www.sg-systemet.com/bestallning/PHP/selectStatusTest.php";
+                Url_To_Script_Insert = "https://www.sg-systemet.com/bestallning/PHP/insertStatusTest.php";
             }
         }
 
