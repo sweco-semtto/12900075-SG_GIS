@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using SGAB.SGAB_Karta;
 
 namespace SGAB
 {
@@ -29,11 +30,11 @@ namespace SGAB
         /// <returns></returns>
         public IAdmin LoadAdmin()
         {
+            if (!File.Exists(this.PathToAdminDll))
+                return null;
+
             try
             {
-                if (!File.Exists(this.PathToAdminDll))
-                    return null;
-
                 // Laddar in dll:en ifrån mappen. 
                 Assembly assembly = Assembly.LoadFrom(PathToAdminDll);
                 // Tar fram typen för att kronstuktorer i dll:en. 
@@ -50,6 +51,8 @@ namespace SGAB
             }
             catch (Exception ex)
             {
+                string logPath = SGAB_Karta.Configuration.GetConfiguration().LogFilePath;
+                Log.LogMessage("Admininläsning: \n" + ex.ToString(), logPath);
             }
 
             return null;
