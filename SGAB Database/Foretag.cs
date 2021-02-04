@@ -398,8 +398,7 @@ namespace SGAB.SGAB_Database
             foreach (DataRow rowFromAccess in dataFromAccess.Rows)
                 IdsAccess.Add(rowFromAccess[IdColumnNameInAccess].ToString());
 
-            int year = DateTime.Now.Year - 1;
-            string date = "#10/1/" + year + "#"; // Tar inte nyår som brytdatum utan 1:a oktober gäller. 
+            string date = GetBreakingDate();
             foreach (DataRow rowFromMySql in dataFromMySql.Rows)
             {
                 if (DateTime.Parse(rowFromMySql[ColumnNameDateInMySql].ToString()) > DateTime.Parse(date) &&
@@ -475,8 +474,7 @@ namespace SGAB.SGAB_Database
         /// <returns>Returnerar sant om data är tillräckligt färsk. </returns>
         public bool CheckIfXMLIsUpToDate(DataTable dataFromXML)
         {
-            int year = DateTime.Now.Year - 1;
-            string date = year + "-09-01"; // Tar inte nyår som brytdatum utan 1:a septemper gäller. 
+            string date = GetBreakingDate();
             DateTime dateLowerLimt = DateTime.Parse(date);
 
             // Kollar om det finns någon rad i xml:en som är för gammal, då är alla rader för gamla. 
@@ -487,6 +485,16 @@ namespace SGAB.SGAB_Database
             return true;
         }
 
-		
+        /// <summary>
+        /// Hämtar ut brytdatum för ett nytt gödslingår. Tar inte nyår som brytdatum, utan det är 1:a december gäller. 
+        /// </summary>
+        /// <returns></returns>
+        protected string GetBreakingDate()
+        {
+            int year = DateTime.Now.Year - 1;
+            string date = year + "-12-01"; 
+
+            return date;
+        }
     }
 }
