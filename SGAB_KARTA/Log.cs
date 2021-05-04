@@ -25,17 +25,17 @@ namespace SGAB.SGAB_Karta
 			LogMessage("ERR: " + message, path);
 		}
 
-		public static void LogInformationMessage(string message, string path)
+		public static void LogDebugMessage(string message, string path)
 		{
-			if (!SGAB_Karta.Configuration.GetConfiguration().LogInformation)
+			if (!SGAB_Karta.Configuration.GetConfiguration().LogDebug)
 				return;
 
-			LogMessage("INFO: " + message, path);
+			LogMessage("DEBUG: " + message, path);
 		}
 
 		public static void LogClosing(string message, string path)
 		{
-			if (!SGAB_Karta.Configuration.GetConfiguration().LogExceptions && !SGAB_Karta.Configuration.GetConfiguration().LogInformation)
+			if (!SGAB_Karta.Configuration.GetConfiguration().LogExceptions && !SGAB_Karta.Configuration.GetConfiguration().LogDebug)
 				return;
 
 			LogMessage(message, path, false);

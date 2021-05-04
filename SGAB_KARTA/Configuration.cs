@@ -95,17 +95,17 @@ namespace SGAB.SGAB_Karta
 			}
 		}
 
-		public bool LogInformation
+		public bool LogDebug
 		{
 			get
 			{
 				try
 				{
-					string value = GetValue("LogInformation");
+					string value = GetValue("LogDebug");
 					if (value == null)
 						return false;
 
-					return GetValue("LogInformation").ToUpper().Equals("TRUE");
+					return GetValue("LogDebug").ToUpper().Equals("TRUE");
 				}
 				catch
 				{

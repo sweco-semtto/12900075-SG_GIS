@@ -38,11 +38,11 @@ namespace SGAB
         public SGAB()
         {
             string logPath = SGAB_Karta.Configuration.GetConfiguration().LogFilePath;
-            Log.LogInformationMessage("Startar och initialiserar SG-GIS", logPath);
+            Log.LogDebugMessage("Startar och initialiserar SG-GIS", logPath);
 
             InitializeComponent();
 
-            Log.LogInformationMessage("Initialisering klar", logPath);
+            Log.LogDebugMessage("Initialisering klar", logPath);
 
             //justerar storleken på applikationen beroende på vad som har angetts i config-filen
             //drar bort lite för att hela ska synas men användaren kan på detta sätt fylla i
@@ -58,9 +58,9 @@ namespace SGAB
             //öppnar applikationen centrerat
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            Log.LogInformationMessage("Skapar upp kartan", logPath);
+            Log.LogDebugMessage("Skapar upp kartan", logPath);
             _karta = new Karta();
-            Log.LogInformationMessage("Skapar kartan skapad", logPath);
+            Log.LogDebugMessage("Skapar kartan skapad", logPath);
 
             this.splitContainer1.Panel2.Controls.Add(_karta);
             _karta.Dock = DockStyle.Right;
@@ -68,20 +68,20 @@ namespace SGAB
 
             _karta.SetComponentSize(splitContainer1.Panel2.Width, splitContainer1.Panel2.Height);
 
-            Log.LogInformationMessage("Kontrollerar internetuppkoppling", logPath);
+            Log.LogDebugMessage("Kontrollerar internetuppkoppling", logPath);
             SGAB_InternetConnection.InternetConnection.CheckForInternetConnection();
             if (SGAB_InternetConnection.InternetConnection.HasInternetConnection)
-                Log.LogInformationMessage("Internetuppkoppling finns", logPath);
+                Log.LogDebugMessage("Internetuppkoppling finns", logPath);
             else
-                Log.LogInformationMessage("Internetuppkoppling saknas", logPath);
+                Log.LogDebugMessage("Internetuppkoppling saknas", logPath);
 
             Startplats.LoggFolder = SGAB_Karta.Configuration.GetConfiguration().WorkPath;
 
             // Loggar in
-            Log.LogInformationMessage("Kontrollerar om admin", logPath);
+            Log.LogDebugMessage("Kontrollerar om admin", logPath);
             LoggedInAsAdmin = LogIn.TryToLoginAsAdmin();
             if (LoggedInAsAdmin)
-                Log.LogInformationMessage("Inloggad som admin", logPath);               
+                Log.LogDebugMessage("Inloggad som admin", logPath);               
 
             if (!LoggedInAsAdmin && SGAB_InternetConnection.InternetConnection.HasInternetConnection)
             {
@@ -90,7 +90,7 @@ namespace SGAB
                 {
                     _karta.Username = SGAB_Karta.Configuration.GetConfiguration().Username;
                     _karta.EntrepreneurId = EntrepreneurId;
-                    Log.LogInformationMessage("Inloggad som entreprenör " + _karta.Username + " med id " + _karta.EntrepreneurId, logPath);
+                    Log.LogDebugMessage("Inloggad som entreprenör " + _karta.Username + " med id " + _karta.EntrepreneurId, logPath);
 
                     // Spara Entreprenörsid
 
@@ -106,13 +106,13 @@ namespace SGAB
 
             if (!LoggedInAsAdmin && !SGAB_InternetConnection.InternetConnection.HasInternetConnection)
             {
-                Log.LogInformationMessage("Läser in entreprenör i offline-läge", logPath);
+                Log.LogDebugMessage("Läser in entreprenör i offline-läge", logPath);
                 _karta.EntrepreneurId = ReadEntreprenuersId();
-                Log.LogInformationMessage("Inloggad som entreprenör " + _karta.Username + " med id " + _karta.EntrepreneurId, logPath);
+                Log.LogDebugMessage("Inloggad som entreprenör " + _karta.Username + " med id " + _karta.EntrepreneurId, logPath);
             }
             else if (!LoggedInAsAdmin && SGAB_InternetConnection.InternetConnection.HasInternetConnection)
             {
-                Log.LogInformationMessage("Skriver tillbaka entreprenör, id " + EntrepreneurId + " från online-läget", logPath);
+                Log.LogDebugMessage("Skriver tillbaka entreprenör, id " + EntrepreneurId + " från online-läget", logPath);
                 WriteEntreprenuersId(EntrepreneurId);
             }
             else if (LoggedInAsAdmin && !SGAB_InternetConnection.InternetConnection.HasInternetConnection)
@@ -121,14 +121,14 @@ namespace SGAB
             }
 
             // Skapar GPS-spårning
-            Log.LogInformationMessage("Bygger upp GPS-spårningen", logPath);
+            Log.LogDebugMessage("Bygger upp GPS-spårningen", logPath);
             _errorKeyGPSTracker = Keys.Home;
             _gpsTracker = new GPSTracker();
             _karta.GpsTracker = _gpsTracker;
             try
             {
                 _gpsTracker.PathToDirectoryContainingLogFiles = @"C:\TEMP\SG log";
-                Log.LogInformationMessage("GPS:en spåras till mappen " + _gpsTracker.PathToDirectoryContainingLogFiles, logPath);
+                Log.LogDebugMessage("GPS:en spåras till mappen " + _gpsTracker.PathToDirectoryContainingLogFiles, logPath);
             }
             catch (Exception ex)
             {
@@ -136,7 +136,7 @@ namespace SGAB
                 Log.LogErrorMessage("Kan inte skapa mappen C:\\TEMP\\SG log för GPS-spårningen", logPath);
                 return;
             }
-            Log.LogInformationMessage("Startar GPS-spårningen", logPath);
+            Log.LogDebugMessage("Startar GPS-spårningen", logPath);
             _gpsTracker.StartTracking();
 
             // Tillfälligt för databasdelen
@@ -200,7 +200,7 @@ namespace SGAB
             _karta.StopGPS();
 
             string logPath = SGAB_Karta.Configuration.GetConfiguration().LogFilePath;
-            Log.LogInformationMessage("Stänger av SG-GIS", logPath);
+            Log.LogDebugMessage("Stänger av SG-GIS", logPath);
             Log.LogClosing("------------------------------------------------------------", logPath);
             Log.LogClosing("", logPath);
         }
