@@ -31,6 +31,7 @@ namespace SGAB
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SGAB));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblLegend = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -74,8 +75,10 @@ namespace SGAB
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SGAB";
             this.Text = "SGAB Karta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SGAB_FormClosing);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 

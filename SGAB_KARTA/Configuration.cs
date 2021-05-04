@@ -78,21 +78,40 @@ namespace SGAB.SGAB_Karta
 
 		public bool LogExceptions
 		{
-			
 			get 
 			{ 
 				try
 				{
+					string value = GetValue("LogExceptions");
+					if (value == null)
+						return false;
+
 					return GetValue("LogExceptions").ToUpper().Equals("TRUE"); 
 				}
 				catch
 				{
 					return false; 
 				}	
-				
 			}
-			
-			
+		}
+
+		public bool LogInformation
+		{
+			get
+			{
+				try
+				{
+					string value = GetValue("LogInformation");
+					if (value == null)
+						return false;
+
+					return GetValue("LogInformation").ToUpper().Equals("TRUE");
+				}
+				catch
+				{
+					return false;
+				}
+			}
 		}
 
 

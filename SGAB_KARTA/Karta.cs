@@ -215,7 +215,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage("MapException + " + mex.Message, Configuration.LogFilePath);
+                    Log.LogErrorMessage("MapException + " + mex.Message, Configuration.LogFilePath);
                 }
 
             }
@@ -226,7 +226,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage("DataException + " + dex.Message, Configuration.LogFilePath);
+                    Log.LogErrorMessage("DataException + " + dex.Message, Configuration.LogFilePath);
                 }
             }
             catch (GPSException gex)
@@ -236,7 +236,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage("GPSException_Karta_Load + " + gex.Message, Configuration.LogFilePath);
+                    Log.LogErrorMessage("GPSException_Karta_Load + " + gex.Message, Configuration.LogFilePath);
                 }
             }
             catch (FormatException fex)
@@ -246,7 +246,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage("FormatException + " + fex.Message, Configuration.LogFilePath);
+                    Log.LogErrorMessage("FormatException + " + fex.Message, Configuration.LogFilePath);
                 }
             }
 			catch (InvalidOperationException ioex)
@@ -257,7 +257,7 @@ namespace SGAB.SGAB_Karta
 
 				if (Configuration.LogExceptions)
 				{
-					Log.LogMessage("Finns inga startplatser för årets säsong än: InvalidOperationException + " + ioex.Message, Configuration.LogFilePath);
+					Log.LogErrorMessage("Finns inga startplatser för årets säsong än: InvalidOperationException + " + ioex.Message, Configuration.LogFilePath);
 				}
 			}
             catch (Exception ex)
@@ -267,7 +267,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -539,7 +539,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -607,7 +607,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -698,7 +698,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -734,7 +734,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -767,7 +767,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -918,7 +918,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -952,7 +952,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -983,7 +983,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1017,7 +1017,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1042,7 +1042,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1070,7 +1070,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1092,7 +1092,7 @@ namespace SGAB.SGAB_Karta
              
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1126,7 +1126,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage("GPSException_timer1_Tick + " + gex.Message, Configuration.LogFilePath);
+                    Log.LogErrorMessage("GPSException_timer1_Tick + " + gex.Message, Configuration.LogFilePath);
                 }
             }
             catch (Exception ex)
@@ -1136,7 +1136,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage("Exception_timer1_Tick + " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage("Exception_timer1_Tick + " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
             }
 
@@ -1166,7 +1166,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
                               
                 ExceptionHandler.HandleException(ex);
@@ -1203,7 +1203,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1234,7 +1234,7 @@ namespace SGAB.SGAB_Karta
 
                 if (Configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message + " " + ex.StackTrace, Configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);

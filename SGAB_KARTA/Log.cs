@@ -12,14 +12,50 @@ namespace SGAB.SGAB_Karta
 		{		
 		}
 
-		public static void LogMessage(string message, string path)
+		/// <summary>
+		/// Loggar ett felmeddelande 
+		/// </summary>
+		/// <param name="message"></param>
+		/// <param name="path"></param>
+		public static void LogErrorMessage(string message, string path)
+		{
+			if (!SGAB_Karta.Configuration.GetConfiguration().LogExceptions)
+				return;
+
+			LogMessage("ERR: " + message, path);
+		}
+
+		public static void LogInformationMessage(string message, string path)
+		{
+			if (!SGAB_Karta.Configuration.GetConfiguration().LogInformation)
+				return;
+
+			LogMessage("INFO: " + message, path);
+		}
+
+		public static void LogClosing(string message, string path)
+		{
+			if (!SGAB_Karta.Configuration.GetConfiguration().LogExceptions && !SGAB_Karta.Configuration.GetConfiguration().LogInformation)
+				return;
+
+			LogMessage(message, path, false);
+		}
+
+		private static void LogMessage(string message, string path, bool writeTimeStamp = true)
 		{
 			StreamWriter writer = null;
 
 			try
 			{
 				writer = new StreamWriter(path, true);
-				writer.WriteLine(DateTime.Now.ToLongDateString() + "\t" + DateTime.Now.ToLongTimeString() + "\t" + message);
+
+				if (!writeTimeStamp)
+				{
+					writer.WriteLine(message);
+					return;
+				}
+
+				writer.WriteLine(DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToLongTimeString() + "\t" + message);
 			}
 			catch (Exception)
 			{
@@ -29,8 +65,6 @@ namespace SGAB.SGAB_Karta
                 if (writer != null)
 				    writer.Close();
 			}
-
 		}
-
 	}
 }

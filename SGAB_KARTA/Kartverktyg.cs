@@ -163,7 +163,7 @@ namespace SGAB.SGAB_Karta
                     catch (Exception ex)
                     {
                         string error = ex.Message;
-						Log.LogMessage("Kan inte läsa in kartlager: \n " + ex.Message, _karta.Configuration.LogFilePath);
+						Log.LogErrorMessage("Kan inte läsa in kartlager: \n " + ex.Message, _karta.Configuration.LogFilePath);
 
                         //ingenting sker om ett lager i projektfilen inte kan läsas
                     }
@@ -193,7 +193,7 @@ namespace SGAB.SGAB_Karta
               
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -277,7 +277,7 @@ namespace SGAB.SGAB_Karta
 
             if (Configuration.GetConfiguration().LogExceptions)
             {
-                Log.LogMessage("Database exception + " + e.Exception.Message, Configuration.GetConfiguration().LogFilePath);
+                Log.LogErrorMessage("Database exception + " + e.Exception.Message, Configuration.GetConfiguration().LogFilePath);
             }
         }
 
@@ -356,7 +356,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -386,7 +386,7 @@ namespace SGAB.SGAB_Karta
                
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -414,7 +414,7 @@ namespace SGAB.SGAB_Karta
                
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -456,7 +456,7 @@ namespace SGAB.SGAB_Karta
              
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -486,7 +486,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -515,7 +515,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -564,7 +564,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -739,7 +739,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -810,7 +810,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -839,7 +839,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -997,7 +997,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1035,7 +1035,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1075,7 +1075,7 @@ namespace SGAB.SGAB_Karta
                 {
                     if (_configuration.LogExceptions)
                     {
-                        Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                        Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                     }
                     ExceptionHandler.HandleException(ex);
                     MessageBox.Show("Kontrollera att filen du försöker öppna är en tab-fil.", "Fel vid öppnandet av tabfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1146,7 +1146,7 @@ namespace SGAB.SGAB_Karta
                     {
                         if (_configuration.LogExceptions)
                         {
-                            Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                            Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                         }
                         ExceptionHandler.HandleException(ex);
                         MessageBox.Show("Kontrollera att filen du försöker öppna är en tab-fil.", "Fel vid öppnandet av tab-fil", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1183,7 +1183,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
                 ExceptionHandler.HandleException(ex);
                 MessageBox.Show("Kontrollera att filen du försöker öppna är en tif(f)-fil.", "Fel vid öppnandet av tiffil", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1241,7 +1241,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1275,7 +1275,7 @@ namespace SGAB.SGAB_Karta
             {
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1305,7 +1305,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1337,7 +1337,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);
@@ -1369,7 +1369,7 @@ namespace SGAB.SGAB_Karta
 
                 if (_configuration.LogExceptions)
                 {
-                    Log.LogMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
+                    Log.LogErrorMessage(ex.GetType().ToString() + " " + ex.Message, _configuration.LogFilePath);
                 }
 
                 ExceptionHandler.HandleException(ex);

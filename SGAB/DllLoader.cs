@@ -52,7 +52,7 @@ namespace SGAB
             catch (Exception ex)
             {
                 string logPath = SGAB_Karta.Configuration.GetConfiguration().LogFilePath;
-                Log.LogMessage("Admininläsning: \n" + ex.ToString(), logPath);
+                Log.LogErrorMessage("Admininläsning: \n" + ex.ToString(), logPath);
             }
 
             return null;

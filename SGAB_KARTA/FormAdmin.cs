@@ -438,6 +438,9 @@ namespace SGAB.SGAB_Karta
         {
             CallbackGetDataMySql callback = delegate(DataTable dtforetag, DataTable dtstatus, DataTable dtentreprenorer, DataTable dtstartplatser)
             {
+                string logPath = SGAB_Karta.Configuration.GetConfiguration().LogFilePath;
+                Log.LogInformationMessage("Synkroniserar med PHP", logPath);
+
                 ForetagFromMySQL = dtforetag;
                 StartplatserFromMySQL = dtstartplatser;
 
